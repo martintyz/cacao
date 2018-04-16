@@ -1,0 +1,9 @@
+#Archivo De Configuracion
+#Thu Oct 22 18:36:07 CDT 2015
+CHECK=0
+DB=cacaodb
+USUARIO=admincacao
+PUERTO=3306
+IPSERVER=184.171.248.90
+PASSWORD=Pr0m0ksis
+

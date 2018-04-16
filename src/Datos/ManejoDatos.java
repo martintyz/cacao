@@ -9,6 +9,6 @@ package Datos;
  *
  * @author Sistemas
  */
-public class CapaDatos {
+public class ManejoDatos {
     
 }
