@@ -6,6 +6,9 @@
 package Presentacion;
 
 import Negocio.Logica;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  *
@@ -73,11 +76,36 @@ public class frmLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new frmLogin().setVisible(true);
+//            }
+//        });
+        Reset();
+    }
+    public static void Reset(){
+        try{
+        Properties Proplect = new Properties();
+        InputStream Entra = new FileInputStream("config.cao");
+        Proplect.load(Entra);
+        String chk=Proplect.getProperty("CHECK");
+        if("1".equals(chk)){
+            new Thread(new Splash()).start();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmLogin().setVisible(true);
+            new frmLogin().setVisible(false);
             }
         });
+        }else{
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmConfiguracion().setVisible(true);
+            }
+            });
+        }
+        }catch(Exception e){
+            
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
