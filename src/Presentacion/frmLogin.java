@@ -6,6 +6,8 @@
 package Presentacion;
 
 import Negocio.Logica;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
@@ -21,6 +23,9 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+        setLocationRelativeTo(null);
+        Image icon=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/cacao.png"));
+        setIconImage(icon);
     }
 
     /**

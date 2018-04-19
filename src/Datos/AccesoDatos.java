@@ -44,8 +44,7 @@ public class AccesoDatos {
     public static boolean TestConexion(String IPS, String USU, String PAS, String DAT, String PUE) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
     
     {
-        String Controlador = "com.mysql.jdbc.Driver";
-        Class.forName(Controlador).newInstance();
+        Class.forName("com.mysql.jdbc.Driver");
         
         String Url = "jdbc:mysql://"+IPS+":"+PUE+"/"+DAT;
         
