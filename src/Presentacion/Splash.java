@@ -5,30 +5,41 @@
  */
 package Presentacion;
 
-
 import com.sun.awt.AWTUtilities;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
- * @author SISTEMAS5
+ * @author Sistemas
  */
-public class Splash extends javax.swing.JFrame implements Runnable {
+public class Splash extends javax.swing.JFrame implements Runnable{
     frmLogin flog=new frmLogin();
-    Thread hilo;
     /**
      * Creates new form Splash
      */
+    
+    Thread t;
     public Splash() {
         initComponents();
-        setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
-         Image icon=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/cacao.png"));
+        Image icon=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/cacao.png"));
         setIconImage(icon);
+    }
+    
+    public void run(){
+        try {
+            lblsplash.setOpaque(false);
+            this.setLocationRelativeTo(null);
+            this.setVisible(true);
+            t.sleep(5000);
+            this.dispose();
+            flog.setVisible(true);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -40,47 +51,26 @@ public class Splash extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblSplash = new javax.swing.JLabel();
-        pgbSplash = new javax.swing.JProgressBar();
-        jLabel1 = new javax.swing.JLabel();
+        lblsplash = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1024, 743));
-        setResizable(false);
 
-        lblSplash.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSplash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pandora.png"))); // NOI18N
-        lblSplash.setMinimumSize(new java.awt.Dimension(200, 180));
-
-        pgbSplash.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        pgbSplash.setForeground(new java.awt.Color(204, 0, 0));
-        pgbSplash.setBorderPainted(false);
-        pgbSplash.setString("");
-        pgbSplash.setStringPainted(true);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/splash.png"))); // NOI18N
+        lblsplash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/splash.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(pgbSplash, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
-                .addComponent(lblSplash, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblsplash)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSplash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pgbSplash, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblsplash)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,26 +82,6 @@ public class Splash extends javax.swing.JFrame implements Runnable {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblSplash;
-    private javax.swing.JProgressBar pgbSplash;
+    private javax.swing.JLabel lblsplash;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void run() {
-        this.setVisible(true);
-        lblSplash.setOpaque(false);
-       
-        try {
-            for(int i=0;i<100;i++){
-                pgbSplash.setValue(i);
-                pgbSplash.setString(Integer.toString(i)+"%");
-                hilo.sleep(50);
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.dispose();
-        flog.setVisible(true);
-    }
 }
