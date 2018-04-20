@@ -34,7 +34,7 @@ public class Splash extends javax.swing.JFrame implements Runnable{
             lblsplash.setOpaque(false);
             this.setLocationRelativeTo(null);
             this.setVisible(true);
-            t.sleep(5000);
+            t.sleep(2500);
             this.dispose();
             flog.setVisible(true);
         } catch (InterruptedException ex) {
