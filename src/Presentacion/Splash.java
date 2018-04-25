@@ -25,7 +25,7 @@ public class Splash extends javax.swing.JFrame implements Runnable{
     public Splash() {
         initComponents();
         AWTUtilities.setWindowOpaque(this, false);
-        Image icon=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/cacao.png"));
+        Image icon=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/greed.png"));
         setIconImage(icon);
     }
     
@@ -56,7 +56,7 @@ public class Splash extends javax.swing.JFrame implements Runnable{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        lblsplash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/splash.png"))); // NOI18N
+        lblsplash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/splashgreed.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
