@@ -8,7 +8,9 @@ package Presentacion;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import Entidades.Empresa;
 
 /**
  *
@@ -24,6 +26,8 @@ public class frmMenusys extends javax.swing.JFrame {
          setLocationRelativeTo(null);
         Image icon=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/greed.png"));
         setIconImage(icon);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setTitle("GREED - Sistema de Cartera "+Empresa.getSnombreEmpresa());
     }
 
     /**
@@ -35,47 +39,52 @@ public class frmMenusys extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu = new javax.swing.JMenu();
-        jMenuOperacion = new javax.swing.JMenu();
-        jMenuAcreditados = new javax.swing.JMenu();
-        jMenuItemIndividuales = new javax.swing.JMenuItem();
+        mnbSistema = new javax.swing.JMenuBar();
+        mnuCatalogos = new javax.swing.JMenu();
+        mnuOperacion = new javax.swing.JMenu();
+        mnuAcreditados = new javax.swing.JMenu();
+        mniIndividuales = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(6, 66, 125));
         setMinimumSize(new java.awt.Dimension(1024, 768));
-        setName("Sistema"); // NOI18N
+        setName(""); // NOI18N
         setSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(null);
 
-        jMenu.setText("File");
-        jMenuBar1.add(jMenu);
+        mnbSistema.setBackground(new java.awt.Color(255, 255, 255));
+        mnbSistema.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 36, 72)));
+        mnbSistema.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        mnbSistema.setPreferredSize(new java.awt.Dimension(124, 25));
 
-        jMenuOperacion.setText("Operación");
+        mnuCatalogos.setText("Catálogos");
+        mnbSistema.add(mnuCatalogos);
 
-        jMenuAcreditados.setText("Acreditados");
+        mnuOperacion.setText("Operación");
 
-        jMenuItemIndividuales.setText("Individuales");
-        jMenuItemIndividuales.addActionListener(new java.awt.event.ActionListener() {
+        mnuAcreditados.setText("Acreditados");
+
+        mniIndividuales.setText("Individuales");
+        mniIndividuales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemIndividualesActionPerformed(evt);
+                mniIndividualesActionPerformed(evt);
             }
         });
-        jMenuAcreditados.add(jMenuItemIndividuales);
+        mnuAcreditados.add(mniIndividuales);
 
-        jMenuOperacion.add(jMenuAcreditados);
+        mnuOperacion.add(mnuAcreditados);
 
-        jMenuBar1.add(jMenuOperacion);
+        mnbSistema.add(mnuOperacion);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mnbSistema);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemIndividualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIndividualesActionPerformed
+    private void mniIndividualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniIndividualesActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Click");
-    }//GEN-LAST:event_jMenuItemIndividualesActionPerformed
+    }//GEN-LAST:event_mniIndividualesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,10 +123,10 @@ public class frmMenusys extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu;
-    private javax.swing.JMenu jMenuAcreditados;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItemIndividuales;
-    private javax.swing.JMenu jMenuOperacion;
+    private javax.swing.JMenuBar mnbSistema;
+    private javax.swing.JMenuItem mniIndividuales;
+    private javax.swing.JMenu mnuAcreditados;
+    private javax.swing.JMenu mnuCatalogos;
+    private javax.swing.JMenu mnuOperacion;
     // End of variables declaration//GEN-END:variables
 }
