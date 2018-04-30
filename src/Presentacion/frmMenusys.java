@@ -5,8 +5,10 @@
  */
 package Presentacion;
 
+import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,25 +35,47 @@ public class frmMenusys extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu = new javax.swing.JMenu();
+        jMenuOperacion = new javax.swing.JMenu();
+        jMenuAcreditados = new javax.swing.JMenu();
+        jMenuItemIndividuales = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(6, 66, 125));
         setMinimumSize(new java.awt.Dimension(1024, 768));
         setName("Sistema"); // NOI18N
         setSize(new java.awt.Dimension(1024, 768));
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
-        );
+        jMenu.setText("File");
+        jMenuBar1.add(jMenu);
+
+        jMenuOperacion.setText("Operación");
+
+        jMenuAcreditados.setText("Acreditados");
+
+        jMenuItemIndividuales.setText("Individuales");
+        jMenuItemIndividuales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemIndividualesActionPerformed(evt);
+            }
+        });
+        jMenuAcreditados.add(jMenuItemIndividuales);
+
+        jMenuOperacion.add(jMenuAcreditados);
+
+        jMenuBar1.add(jMenuOperacion);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemIndividualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIndividualesActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Click");
+    }//GEN-LAST:event_jMenuItemIndividualesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,5 +114,10 @@ public class frmMenusys extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu;
+    private javax.swing.JMenu jMenuAcreditados;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemIndividuales;
+    private javax.swing.JMenu jMenuOperacion;
     // End of variables declaration//GEN-END:variables
 }
