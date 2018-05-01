@@ -119,7 +119,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(103, 103, 103)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, 650));
