@@ -300,7 +300,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
         jLabel71 = new javax.swing.JLabel();
         jLabel72 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
+        pnlAnexo = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jRadioButton23 = new javax.swing.JRadioButton();
         jRadioButton24 = new javax.swing.JRadioButton();
@@ -2341,7 +2341,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("PLD", pnlPLD);
 
-        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAnexo.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel26.setBackground(new java.awt.Color(255, 255, 255));
         jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "¿Habla alguna lengua indígena?"));
@@ -2457,14 +2457,14 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlAnexoLayout = new javax.swing.GroupLayout(pnlAnexo);
+        pnlAnexo.setLayout(pnlAnexoLayout);
+        pnlAnexoLayout.setHorizontalGroup(
+            pnlAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAnexoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel25Layout.createSequentialGroup()
+                .addGroup(pnlAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlAnexoLayout.createSequentialGroup()
                         .addComponent(jLabel74)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2474,11 +2474,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
                     .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
+        pnlAnexoLayout.setVerticalGroup(
+            pnlAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAnexoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel74)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2492,7 +2492,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
                 .addContainerGap(501, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Datos Anexo", jPanel25);
+        jTabbedPane1.addTab("Datos Anexo", pnlAnexo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2693,7 +2693,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
@@ -2818,6 +2817,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblPersonaMoralAcreditado3;
     private javax.swing.JLabel lblRfc;
     private javax.swing.JLabel lblSexo3;
+    private javax.swing.JPanel pnlAnexo;
     private javax.swing.JPanel pnlCoordinacion;
     private javax.swing.JPanel pnlDatosCliente3;
     private javax.swing.JPanel pnlDatosGeneralesCliente;
