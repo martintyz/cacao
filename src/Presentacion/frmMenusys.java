@@ -28,6 +28,10 @@ public class frmMenusys extends javax.swing.JFrame {
         setIconImage(icon);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("GREED - Sistema de Cartera "+Empresa.getSnombreEmpresa());
+        this.setLayout(new BorderLayout());
+        this.add(pnlSistema, BorderLayout.CENTER);
+        this.pack();
+        this.setVisible(true);
     }
 
     /**
@@ -39,6 +43,7 @@ public class frmMenusys extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlSistema = new javax.swing.JPanel();
         mnbSistema = new javax.swing.JMenuBar();
         mnuCatalogos = new javax.swing.JMenu();
         mnuOperacion = new javax.swing.JMenu();
@@ -51,6 +56,12 @@ public class frmMenusys extends javax.swing.JFrame {
         setName(""); // NOI18N
         setSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(null);
+
+        pnlSistema.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSistema.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        pnlSistema.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(pnlSistema);
+        pnlSistema.setBounds(0, 0, 400, 320);
 
         mnbSistema.setBackground(new java.awt.Color(255, 255, 255));
         mnbSistema.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 36, 72)));
@@ -128,5 +139,6 @@ public class frmMenusys extends javax.swing.JFrame {
     private javax.swing.JMenu mnuAcreditados;
     private javax.swing.JMenu mnuCatalogos;
     private javax.swing.JMenu mnuOperacion;
+    private javax.swing.JPanel pnlSistema;
     // End of variables declaration//GEN-END:variables
 }

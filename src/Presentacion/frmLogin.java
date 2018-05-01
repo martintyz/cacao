@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import Negocio.Logica;
 import Entidades.Usuario;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -124,9 +125,9 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, 650));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Identifícate");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 111, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -173,6 +174,11 @@ public class frmLogin extends javax.swing.JFrame {
         txtpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtpass.setBorder(null);
         txtpass.setNextFocusableComponent(btniniciar);
+        txtpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpassKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 411, 190, -1));
 
         pack();
@@ -200,6 +206,7 @@ public class frmLogin extends javax.swing.JFrame {
 //        
 //            System.out.println("Error "+e.getMessage());
 //        }
+
     }//GEN-LAST:event_formWindowActivated
 
     private void btniniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciarActionPerformed
@@ -226,6 +233,14 @@ public class frmLogin extends javax.swing.JFrame {
             System.out.println("Error "+e.getMessage());
         }
     }//GEN-LAST:event_btniniciarActionPerformed
+
+    private void txtpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            {
+                btniniciar.doClick();
+            }
+    }//GEN-LAST:event_txtpassKeyPressed
 
     /**
      * @param args the command line arguments
