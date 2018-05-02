@@ -61,7 +61,6 @@ public class frmLogin extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         btniniciar = new javax.swing.JButton();
         txtpass = new javax.swing.JPasswordField();
-        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CACAO - Sistema de Cartera");
@@ -181,10 +180,6 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 411, 190, -1));
-
-        jLabel7.setBackground(new java.awt.Color(3, 36, 72));
-        jLabel7.setText("GREED");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 40, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -319,7 +314,6 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
