@@ -12,13 +12,30 @@ import javax.swing.JOptionPane;
  *
  * @author Jefe de Sistemas
  */
-public class frmDatosGeneralesCliente extends javax.swing.JFrame {
+public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmDatosGeneralesCliente
      */
     public frmDatosGeneralesCliente() {
         initComponents();
+        
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Metal".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -33,6 +50,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
         btnGroupComunicacion = new javax.swing.ButtonGroup();
         btnGroupEstadoCivil = new javax.swing.ButtonGroup();
         btnGroupRestricciones = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pnlDatosGeneralesCliente = new javax.swing.JPanel();
         pnlDatosCliente3 = new javax.swing.JPanel();
@@ -323,8 +341,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
         jRadioButton29 = new javax.swing.JRadioButton();
         jRadioButton30 = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTabbedPane1.setToolTipText("");
 
@@ -805,7 +823,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDatosGeneralesClienteLayout.createSequentialGroup()
                         .addComponent(pnlPreguntaRegistroFederal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlSerieFirmaElectronica, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(pnlSerieFirmaElectronica, javax.swing.GroupLayout.PREFERRED_SIZE, 259, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
         );
         pnlDatosGeneralesClienteLayout.setVerticalGroup(
@@ -1201,7 +1219,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
                 .addComponent(jPanelOficialdeCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelInformacionAdicional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Otros Datos", pnlOtrosDatos);
@@ -2581,37 +2599,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmDatosGeneralesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmDatosGeneralesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmDatosGeneralesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmDatosGeneralesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmDatosGeneralesCliente().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
@@ -2620,6 +2608,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGroupRestricciones;
     private javax.swing.JButton btnNombre;
     private javax.swing.JButton btnPersonaMoral;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbCoordinacion;
     private javax.swing.JComboBox<String> cmbPais1;
     private com.toedter.calendar.JDateChooser dtcFechadeNacimiento3;
