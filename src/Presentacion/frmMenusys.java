@@ -29,7 +29,7 @@ public class frmMenusys extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("GREED - Sistema de Cartera "+Empresa.getSnombreEmpresa());
         this.setLayout(new BorderLayout());
-        this.add(pnlSistema, BorderLayout.CENTER);
+        this.add(jdpSistema, BorderLayout.CENTER);
         this.pack();
         this.setVisible(true);
     }
@@ -43,7 +43,7 @@ public class frmMenusys extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlSistema = new javax.swing.JPanel();
+        jdpSistema = new javax.swing.JDesktopPane();
         mnbSistema = new javax.swing.JMenuBar();
         mnuCatalogos = new javax.swing.JMenu();
         mnuOperacion = new javax.swing.JMenu();
@@ -57,11 +57,9 @@ public class frmMenusys extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(null);
 
-        pnlSistema.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSistema.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        pnlSistema.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(pnlSistema);
-        pnlSistema.setBounds(0, 0, 400, 320);
+        jdpSistema.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jdpSistema);
+        jdpSistema.setBounds(0, -2, 150, 250);
 
         mnbSistema.setBackground(new java.awt.Color(255, 255, 255));
         mnbSistema.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 36, 72)));
@@ -94,51 +92,23 @@ public class frmMenusys extends javax.swing.JFrame {
 
     private void mniIndividualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniIndividualesActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Click");
+        //JOptionPane.showMessageDialog(null, "Click");
+        frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
+        jdpSistema.add(datos);
+        datos.show();
     }//GEN-LAST:event_mniIndividualesActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenusys.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenusys.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenusys.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenusys.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmMenusys().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jdpSistema;
     private javax.swing.JMenuBar mnbSistema;
     private javax.swing.JMenuItem mniIndividuales;
     private javax.swing.JMenu mnuAcreditados;
     private javax.swing.JMenu mnuCatalogos;
     private javax.swing.JMenu mnuOperacion;
-    private javax.swing.JPanel pnlSistema;
     // End of variables declaration//GEN-END:variables
 }
