@@ -17,6 +17,9 @@
     <Component class="javax.swing.ButtonGroup" name="btnGroupHijos">
     </Component>
   </NonVisualComponents>
+  <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -426,10 +429,7 @@
                                           <Component id="jLabel8" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="63" pref="63" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="14" max="32767" attributes="0"/>
                           </Group>
@@ -633,10 +633,7 @@
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jRadioButton11" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="24" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jRadioButton11" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jRadioButton10" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -974,10 +971,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jSeparator5" pref="220" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField3" max="32767" attributes="0"/>
-                                              <Component id="jComboBox6" pref="220" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="jTextField3" max="32767" attributes="0"/>
+                                          <Component id="jComboBox6" pref="220" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1620,7 +1615,6 @@
                                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                                           <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
@@ -1705,10 +1699,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jSeparator15" pref="100" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jSeparator14" max="32767" attributes="0"/>
-                                              <Component id="jTextField9" pref="100" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="jSeparator14" max="32767" attributes="0"/>
+                                          <Component id="jTextField9" pref="100" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>

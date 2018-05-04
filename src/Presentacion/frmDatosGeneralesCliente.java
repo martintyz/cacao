@@ -198,6 +198,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setClosable(true);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         pnlDatosPersonalesSolicitante.setBackground(new java.awt.Color(255, 255, 255));
@@ -331,9 +333,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(63, 63, 63)))
+                    .addComponent(jLabel4))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -374,9 +374,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButton9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelEstadoCivil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelEstadoCivil1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRadioButton11)
                     .addComponent(jRadioButton10))
                 .addGap(60, 60, 60)
                 .addComponent(jRadioButton12)
@@ -627,9 +625,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField3)
-                                .addComponent(jComboBox6, 0, 220, Short.MAX_VALUE)))))
+                            .addComponent(jTextField3)
+                            .addComponent(jComboBox6, 0, 220, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -994,9 +991,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator15, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jSeparator14)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))))
+                            .addComponent(jSeparator14)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
@@ -1140,7 +1136,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                         .addGap(63, 63, 63)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
                                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1649,7 +1644,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPanel jPanelEstadoCivil;
     private javax.swing.JPanel jPanelEstadoCivil1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton10;
@@ -1668,11 +1662,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton22;
     private javax.swing.JRadioButton jRadioButton23;
     private javax.swing.JRadioButton jRadioButton24;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JSeparator jSeparator1;

@@ -36,6 +36,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Acreditados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAcreditadosActionPerformed"/>
+              </Events>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="mniIndividuales">
                   <Properties>

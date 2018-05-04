@@ -72,6 +72,11 @@ public class frmMenusys extends javax.swing.JFrame {
         mnuOperacion.setText("Operación");
 
         mnuAcreditados.setText("Acreditados");
+        mnuAcreditados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAcreditadosActionPerformed(evt);
+            }
+        });
 
         mniIndividuales.setText("Individuales");
         mniIndividuales.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +102,11 @@ public class frmMenusys extends javax.swing.JFrame {
         jdpSistema.add(datos);
         datos.show();
     }//GEN-LAST:event_mniIndividualesActionPerformed
+
+    private void mnuAcreditadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAcreditadosActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_mnuAcreditadosActionPerformed
 
     /**
      * @param args the command line arguments
