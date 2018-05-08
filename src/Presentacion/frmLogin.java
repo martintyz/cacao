@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import Negocio.Logica;
 import Entidades.Usuario;
+import com.alee.laf.WebLookAndFeel;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
@@ -257,12 +258,17 @@ public class frmLogin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Metal".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Metal".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+              }
+            //javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            //javax.swing.UIManager.setLookAndFeel(WebLookAndFeel.class.getCanonicalName());
+            //WebLookAndFeel.initializeManagers();
+            
+            //WebLookAndFeel.install();
             
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

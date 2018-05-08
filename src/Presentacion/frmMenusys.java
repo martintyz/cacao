@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Entidades.Empresa;
+import java.awt.Dimension;
 
 /**
  *
@@ -126,6 +127,9 @@ public class frmMenusys extends javax.swing.JFrame {
     private void mnicodigospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnicodigospActionPerformed
         // TODO add your handling code here:
         frmCodigoPostal cp=new frmCodigoPostal();
+        Dimension desktopSize = jdpSistema.getSize();
+        Dimension FrameSize = cp.getSize();
+        cp.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         jdpSistema.add(cp);
         cp.show();
     }//GEN-LAST:event_mnicodigospActionPerformed
