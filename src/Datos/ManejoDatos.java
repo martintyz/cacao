@@ -45,5 +45,17 @@ public class ManejoDatos {
             }
            return null;
     }
+    public ResultSet Entidades(){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareStatement("{call spConsultaEntidad()}");
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
     // </editor-fold>
 }

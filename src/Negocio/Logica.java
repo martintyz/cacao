@@ -49,5 +49,16 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet Entidades(){
+        try{
+            ManejoDatos mdDatos=new ManejoDatos();
+            ResultSet ent=mdDatos.Entidades();
+            if(ent!=null)
+                return ent;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando la lista de Entidades "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
 }

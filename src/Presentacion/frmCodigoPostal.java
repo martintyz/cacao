@@ -5,12 +5,19 @@
  */
 package Presentacion;
 
+import Negocio.Logica;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.ResultSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 
 /**
@@ -47,14 +54,15 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         lblMunicipio = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblMunicipio = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         lblCodigoP = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        btnAgregar = new javax.swing.JButton();
+        tblCP = new javax.swing.JTable();
+        btnAgregarCP = new javax.swing.JButton();
         btnListaCP = new javax.swing.JButton();
         btnListaMuni = new javax.swing.JButton();
+        btnEditarCP = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11))); // NOI18N
@@ -62,6 +70,23 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Entidades federativas, municipios y códigos postales");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/greedICO.png"))); // NOI18N
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jScrollPane1.setBorder(null);
 
@@ -70,15 +95,12 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "Entidad Federativa", "Abreviatura"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+            }
+        ));
+        tblEntidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEntidadMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblEntidad);
@@ -101,23 +123,15 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         lblMunicipio.setForeground(new java.awt.Color(3, 36, 72));
         lblMunicipio.setText("municipio");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMunicipio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Municipio"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        jScrollPane2.setViewportView(jTable1);
+        ));
+        jScrollPane2.setViewportView(tblMunicipio);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
@@ -128,35 +142,39 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         lblCodigoP.setForeground(new java.awt.Color(3, 36, 72));
         lblCodigoP.setText("codigo");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblCP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Asentamiento", "Código Postal"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        jScrollPane3.setViewportView(jTable2);
+        ));
+        jScrollPane3.setViewportView(tblCP);
 
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Create.png"))); // NOI18N
-        btnAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarCP.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Create.png"))); // NOI18N
+        btnAgregarCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarCP.setBorderPainted(false);
+        btnAgregarCP.setContentAreaFilled(false);
 
         btnListaCP.setBackground(new java.awt.Color(255, 255, 255));
         btnListaCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
         btnListaCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnListaCP.setBorderPainted(false);
+        btnListaCP.setContentAreaFilled(false);
 
         btnListaMuni.setBackground(new java.awt.Color(255, 255, 255));
         btnListaMuni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
         btnListaMuni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnListaMuni.setBorderPainted(false);
+        btnListaMuni.setContentAreaFilled(false);
+
+        btnEditarCP.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditarCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Modify.png"))); // NOI18N
+        btnEditarCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnEditarCP.setBorderPainted(false);
+        btnEditarCP.setContentAreaFilled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,8 +183,8 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +196,9 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(lblCodigoP))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditarCP, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAgregarCP, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnListaCP, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -197,10 +217,10 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
                 .addGap(1, 1, 1)
                 .addComponent(lblEntidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblMunicipio))
@@ -211,23 +231,68 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCodigoP))
-                            .addComponent(btnListaCP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblCodigoP))
+                                .addComponent(btnListaCP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEditarCP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnAgregarCP, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        // TODO add your handling code here:
+        lblEntidad.setText("");
+        lblMunicipio.setText("");
+        lblCodigoP.setText("");
+        llenarEntidades();
+    }//GEN-LAST:event_formInternalFrameActivated
+
+    private void tblEntidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEntidadMouseClicked
+        // TODO add your handling code here:
+        int row=tblEntidad.rowAtPoint(evt.getPoint());
+        int col=tblEntidad.columnAtPoint(evt.getPoint());
+        
+        lblEntidad.setText((String)tblEntidad.getModel().getValueAt(row, 1));
+    }//GEN-LAST:event_tblEntidadMouseClicked
+    public void llenarEntidades(){
+        try{
+            Logica oLogica=new Logica();
+            ResultSet ent=oLogica.Entidades();
+            String[] titulos={"Código","Entidad federativa","Abreviatura"};
+            DefaultTableModel entidades=new DefaultTableModel(null, titulos);
+            int[] ancho={5,100,8};
+            Object[] fila=new Object[3];
+            if (ent!=null){
+                while(ent.next()){
+                    fila[0]=ent.getInt(1);
+                    fila[1]=ent.getString(2);
+                    fila[2]=ent.getString(3);
+                    entidades.addRow(fila);
+                }
+            }
+            tblEntidad.setModel(entidades);
+            tblEntidad.setAutoCreateColumnsFromModel(true);
+            JTableColumnsWidth.setWidth(tblEntidad,611,10,70,20 );
+            tblEntidad.setRowSelectionInterval(0, 0);
+            lblEntidad.setText((String)tblEntidad.getModel().getValueAt(0, 1));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    
+    
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregarCP;
+    private javax.swing.JButton btnEditarCP;
     private javax.swing.JButton btnListaCP;
     private javax.swing.JButton btnListaMuni;
     private javax.swing.JLabel jLabel1;
@@ -236,11 +301,11 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblCodigoP;
     private javax.swing.JLabel lblEntidad;
     private javax.swing.JLabel lblMunicipio;
+    private javax.swing.JTable tblCP;
     private javax.swing.JTable tblEntidad;
+    private javax.swing.JTable tblMunicipio;
     // End of variables declaration//GEN-END:variables
 }
