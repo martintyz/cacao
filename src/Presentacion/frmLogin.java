@@ -15,10 +15,12 @@ import java.util.Properties;
 
 import Negocio.Logica;
 import Entidades.Usuario;
+import com.alee.laf.WebLookAndFeel;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 /**
  *
  * @author Sistemas
@@ -50,7 +52,7 @@ public class frmLogin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        btnsalir = new javax.swing.JButton();
+        lblSalir = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cmbemp = new javax.swing.JComboBox<>();
@@ -86,14 +88,13 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido");
 
-        btnsalir.setBackground(new java.awt.Color(3, 36, 72));
-        btnsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnsalir.setText("Salir");
-        btnsalir.setBorder(null);
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
+        lblSalir.setBackground(new java.awt.Color(3, 36, 72));
+        lblSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSalir.setForeground(new java.awt.Color(255, 255, 255));
+        lblSalir.setText("Salir");
+        lblSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSalirMouseClicked(evt);
             }
         });
 
@@ -109,17 +110,19 @@ public class frmLogin extends javax.swing.JFrame {
                 .addContainerGap(59, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnsalir))
+                .addComponent(lblSalir))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(btnsalir)
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel2))
+                    .addComponent(lblSalir))
                 .addGap(103, 103, 103)
                 .addComponent(jLabel1)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, 650));
@@ -161,6 +164,7 @@ public class frmLogin extends javax.swing.JFrame {
         btniniciar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btniniciar.setText("Iniciar Sesión");
         btniniciar.setBorder(null);
+        btniniciar.setBorderPainted(false);
         btniniciar.setName(""); // NOI18N
         btniniciar.setNextFocusableComponent(cmbemp);
         btniniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,11 +187,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btnsalirActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
@@ -222,12 +221,14 @@ public class frmLogin extends javax.swing.JFrame {
                     Usuario.setIiduser(r.getInt("idusuario"));
                     Usuario.setcAlias(usuario);
                     Usuario.setcPwd(pass);
+                    
+                    JOptionPane.showMessageDialog(null,"Bienvenido ");//+Usuario.getcNombre());
+                    this.setVisible(false);
+                    frmMenusys menu=new frmMenusys();
+                    menu.setVisible(true);
                 }
             }
-            JOptionPane.showMessageDialog(null,"Bienvenido ");//+Usuario.getcNombre());
-            this.setVisible(false);
-            frmMenusys menu=new frmMenusys();
-            menu.setVisible(true);    
+                
             
         }catch(Exception e){
             System.out.println("Error "+e.getMessage());
@@ -242,22 +243,33 @@ public class frmLogin extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_txtpassKeyPressed
 
+    private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_lblSalirMouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ClassNotFoundException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Metal".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//              }
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            //javax.swing.UIManager.setLookAndFeel(WebLookAndFeel.class.getCanonicalName());
+            //WebLookAndFeel.initializeManagers();
+            
+            //WebLookAndFeel.install();
+            
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -306,7 +318,6 @@ public class frmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btniniciar;
-    private javax.swing.JButton btnsalir;
     private javax.swing.JComboBox<String> cmbemp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -317,6 +328,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblSalir;
     private javax.swing.JPasswordField txtpass;
     private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables

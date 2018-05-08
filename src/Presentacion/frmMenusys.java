@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Entidades.Empresa;
+import java.awt.Dimension;
 
 /**
  *
@@ -46,6 +47,7 @@ public class frmMenusys extends javax.swing.JFrame {
         jdpSistema = new javax.swing.JDesktopPane();
         mnbSistema = new javax.swing.JMenuBar();
         mnuCatalogos = new javax.swing.JMenu();
+        mnicodigosp = new javax.swing.JMenuItem();
         mnuOperacion = new javax.swing.JMenu();
         mnuAcreditados = new javax.swing.JMenu();
         mniIndividuales = new javax.swing.JMenuItem();
@@ -66,11 +68,24 @@ public class frmMenusys extends javax.swing.JFrame {
         mnbSistema.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mnbSistema.setPreferredSize(new java.awt.Dimension(124, 25));
 
+        mnuCatalogos.setBackground(new java.awt.Color(255, 255, 255));
         mnuCatalogos.setText("Catálogos");
+
+        mnicodigosp.setBackground(new java.awt.Color(255, 255, 255));
+        mnicodigosp.setText("Municipios y Códigos Postales");
+        mnicodigosp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnicodigospActionPerformed(evt);
+            }
+        });
+        mnuCatalogos.add(mnicodigosp);
+
         mnbSistema.add(mnuCatalogos);
 
+        mnuOperacion.setBackground(new java.awt.Color(255, 255, 255));
         mnuOperacion.setText("Operación");
 
+        mnuAcreditados.setBackground(new java.awt.Color(255, 255, 255));
         mnuAcreditados.setText("Acreditados");
         mnuAcreditados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +93,7 @@ public class frmMenusys extends javax.swing.JFrame {
             }
         });
 
+        mniIndividuales.setBackground(new java.awt.Color(255, 255, 255));
         mniIndividuales.setText("Individuales");
         mniIndividuales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +124,16 @@ public class frmMenusys extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mnuAcreditadosActionPerformed
 
+    private void mnicodigospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnicodigospActionPerformed
+        // TODO add your handling code here:
+        frmCodigoPostal cp=new frmCodigoPostal();
+        Dimension desktopSize = jdpSistema.getSize();
+        Dimension FrameSize = cp.getSize();
+        cp.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        jdpSistema.add(cp);
+        cp.show();
+    }//GEN-LAST:event_mnicodigospActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -117,6 +143,7 @@ public class frmMenusys extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jdpSistema;
     private javax.swing.JMenuBar mnbSistema;
     private javax.swing.JMenuItem mniIndividuales;
+    private javax.swing.JMenuItem mnicodigosp;
     private javax.swing.JMenu mnuAcreditados;
     private javax.swing.JMenu mnuCatalogos;
     private javax.swing.JMenu mnuOperacion;
