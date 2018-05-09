@@ -14,6 +14,8 @@ import java.awt.event.ItemListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -23,6 +25,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     
     char validarCampoNumerico, validarCampoLetras;
     RadioButtonActionListener actionListener;
+    Listener Listener;
     
     /**
      * Creates new form frmDatosGeneralesCliente
@@ -31,6 +34,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         initComponents();
         
         actionListener = new RadioButtonActionListener(tbpDatosGeneralesCliente);
+        Listener = new Listener(tbpDatosGeneralesCliente);
        
         pnlNoHijos.setVisible(true);
         tbpDatosGeneralesCliente.setEnabledAt(2, false);
@@ -44,7 +48,25 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         rbtnUnionLibre.addActionListener(actionListener);
         rbtnDivorciado.addActionListener(actionListener);
         rbtnViudo.addActionListener(actionListener);
+        rbtnEmpleado.addActionListener(actionListener);
+        rbtnNegocio.addActionListener(actionListener);
+        rbtnAmbos.addActionListener(actionListener);
+        /*rbtnHijosNo.addActionListener(actionListenerPane);*/
         
+        /*rbtnAmbos.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                int estado = e.getStateChange();
+                if(estado == ItemEvent.SELECTED){
+                    tbpDatosGeneralesCliente.setEnabledAt(3, true);
+                    tbpDatosGeneralesCliente.setEnabledAt(4, true);
+                }else{
+                    tbpDatosGeneralesCliente.setEnabledAt(3, false);
+                    tbpDatosGeneralesCliente.setEnabledAt(4, false);
+                }
+            }
+        });*/
         
     }
     /**
@@ -109,9 +131,9 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
         jPanel10 = new javax.swing.JPanel();
-        jRadioButton17 = new javax.swing.JRadioButton();
-        jRadioButton18 = new javax.swing.JRadioButton();
-        jRadioButton19 = new javax.swing.JRadioButton();
+        rbtnEmpleado = new javax.swing.JRadioButton();
+        rbtnNegocio = new javax.swing.JRadioButton();
+        rbtnAmbos = new javax.swing.JRadioButton();
         jSeparator25 = new javax.swing.JSeparator();
         jPanel8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -609,23 +631,23 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Fuente de ingresos"));
 
-        jRadioButton17.setBackground(new java.awt.Color(255, 255, 255));
-        btnGroupFuenteIngresos.add(jRadioButton17);
-        jRadioButton17.setText("Empleado");
-        jRadioButton17.addActionListener(new java.awt.event.ActionListener() {
+        rbtnEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        btnGroupFuenteIngresos.add(rbtnEmpleado);
+        rbtnEmpleado.setText("Empleado");
+        rbtnEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton17ActionPerformed(evt);
+                rbtnEmpleadoActionPerformed(evt);
             }
         });
 
-        jRadioButton18.setBackground(new java.awt.Color(255, 255, 255));
-        btnGroupFuenteIngresos.add(jRadioButton18);
-        jRadioButton18.setText("Negocio");
+        rbtnNegocio.setBackground(new java.awt.Color(255, 255, 255));
+        btnGroupFuenteIngresos.add(rbtnNegocio);
+        rbtnNegocio.setText("Negocio");
 
-        jRadioButton19.setBackground(new java.awt.Color(255, 255, 255));
-        btnGroupFuenteIngresos.add(jRadioButton19);
-        jRadioButton19.setSelected(true);
-        jRadioButton19.setText("Ambos");
+        rbtnAmbos.setBackground(new java.awt.Color(255, 255, 255));
+        btnGroupFuenteIngresos.add(rbtnAmbos);
+        rbtnAmbos.setSelected(true);
+        rbtnAmbos.setText("Ambos");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -633,11 +655,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton17)
+                .addComponent(rbtnEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton18)
+                .addComponent(rbtnNegocio)
                 .addGap(67, 67, 67)
-                .addComponent(jRadioButton19)
+                .addComponent(rbtnAmbos)
                 .addGap(21, 21, 21))
         );
         jPanel10Layout.setVerticalGroup(
@@ -645,9 +667,9 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton17)
-                    .addComponent(jRadioButton18)
-                    .addComponent(jRadioButton19))
+                    .addComponent(rbtnEmpleado)
+                    .addComponent(rbtnNegocio)
+                    .addComponent(rbtnAmbos))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2245,11 +2267,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_chcbTelefonoCelularActionPerformed
 
-    private void jRadioButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton17ActionPerformed
+    private void rbtnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnEmpleadoActionPerformed
         // TODO add your handling code here:
       
         
-    }//GEN-LAST:event_jRadioButton17ActionPerformed
+    }//GEN-LAST:event_rbtnEmpleadoActionPerformed
 
     private void rbtnHijosSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnHijosSiActionPerformed
         // TODO add your handling code here: 
@@ -2347,7 +2369,42 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     }
     
 }
+    
+    
+    public class Listener implements ActionListener{
+        
+    public JTabbedPane tabbedPanePrincipal;
+    
+    public Listener(JTabbedPane tabbedPanePrincipal){
+        this.tabbedPanePrincipal = tabbedPanePrincipal;
+    }
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JRadioButton rbtn = (JRadioButton)e.getSource();
+        
+       /* if((rbtn.getText().equals("Empleado"))){
+            tabbedPanePrincipal.setEnabledAt(3, true);        
+        }else{
+            tabbedPanePrincipal.setEnabledAt(3, false);  
+        }*/
+                    
+        switch (rbtn.getText()){
+            case "Empleado":
+                tabbedPanePrincipal.setEnabledAt(3, true);
+                tabbedPanePrincipal.setEnabledAt(4, false);
+                break;
+            case "Negocio":
+                tabbedPanePrincipal.setEnabledAt(4, true);
+                tabbedPanePrincipal.setEnabledAt(3, false);
+                break;
+        }
+        }
+        
+        
+   
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupEstadoCivil;
@@ -2482,9 +2539,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton17;
-    private javax.swing.JRadioButton jRadioButton18;
-    private javax.swing.JRadioButton jRadioButton19;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
@@ -2546,9 +2600,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlNoHijos;
     private javax.swing.JPanel pnlTelefonoCelular;
     private javax.swing.JTextField pnlTelefonoFijo;
+    private javax.swing.JRadioButton rbtnAmbos;
     private javax.swing.JRadioButton rbtnAmbosConyugue;
     private javax.swing.JRadioButton rbtnCasado;
     private javax.swing.JRadioButton rbtnDivorciado;
+    private javax.swing.JRadioButton rbtnEmpleado;
     private javax.swing.JRadioButton rbtnEmpleadoConyugue;
     private javax.swing.JRadioButton rbtnFemenino;
     private javax.swing.JRadioButton rbtnFemeninoConyugue;
@@ -2556,6 +2612,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbtnHijosSi;
     private javax.swing.JRadioButton rbtnMasculino;
     private javax.swing.JRadioButton rbtnMasculinoConyugue;
+    private javax.swing.JRadioButton rbtnNegocio;
     private javax.swing.JRadioButton rbtnNegocioConyugue;
     private javax.swing.JRadioButton rbtnSeparacionBienes;
     private javax.swing.JRadioButton rbtnSociedadConyugal;

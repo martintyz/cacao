@@ -894,11 +894,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jRadioButton17" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnEmpleado" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jRadioButton18" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnNegocio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton19" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnAmbos" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -908,9 +908,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jRadioButton17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rbtnEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rbtnNegocio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rbtnAmbos" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -918,7 +918,7 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton17">
+                        <Component class="javax.swing.JRadioButton" name="rbtnEmpleado">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -929,10 +929,10 @@
                             <Property name="text" type="java.lang.String" value="Empleado"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton17ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnEmpleadoActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton18">
+                        <Component class="javax.swing.JRadioButton" name="rbtnNegocio">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -943,7 +943,7 @@
                             <Property name="text" type="java.lang.String" value="Negocio"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton19">
+                        <Component class="javax.swing.JRadioButton" name="rbtnAmbos">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
