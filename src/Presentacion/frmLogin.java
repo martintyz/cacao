@@ -165,6 +165,7 @@ public class frmLogin extends javax.swing.JFrame {
         btniniciar.setText("Iniciar Sesión");
         btniniciar.setBorder(null);
         btniniciar.setBorderPainted(false);
+        btniniciar.setContentAreaFilled(false);
         btniniciar.setName(""); // NOI18N
         btniniciar.setNextFocusableComponent(cmbemp);
         btniniciar.addActionListener(new java.awt.event.ActionListener() {

@@ -169,6 +169,11 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         btnListaMuni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnListaMuni.setBorderPainted(false);
         btnListaMuni.setContentAreaFilled(false);
+        btnListaMuni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaMuniActionPerformed(evt);
+            }
+        });
 
         btnEditarCP.setBackground(new java.awt.Color(255, 255, 255));
         btnEditarCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Modify.png"))); // NOI18N
@@ -262,6 +267,10 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         
         lblEntidad.setText((String)tblEntidad.getModel().getValueAt(row, 1));
     }//GEN-LAST:event_tblEntidadMouseClicked
+
+    private void btnListaMuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaMuniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListaMuniActionPerformed
     public void llenarEntidades(){
         try{
             Logica oLogica=new Logica();
@@ -286,9 +295,10 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-    
-    
-}
+    }
+    void llenarMunicipios(){
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCP;

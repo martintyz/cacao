@@ -60,5 +60,16 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet Municipios(int idestado){
+        try{
+            ManejoDatos mdDatos=new ManejoDatos();
+            ResultSet muni=mdDatos.Municipios(idestado);
+            if(muni!=null)
+                return muni;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error crgando la lista de Municipios "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
 }
