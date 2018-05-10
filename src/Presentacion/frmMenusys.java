@@ -114,9 +114,19 @@ public class frmMenusys extends javax.swing.JFrame {
     private void mniIndividualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniIndividualesActionPerformed
         // TODO add your handling code here:
         //JOptionPane.showMessageDialog(null, "Click");
-        frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
-        jdpSistema.add(datos);
-        datos.show();
+        try{
+            frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
+            jdpSistema.add(datos);
+            jdpSistema.moveToFront(datos);
+            datos.setSize(jdpSistema.getWidth(), jdpSistema.getHeight());
+            datos.setLocation(0, 0);
+            datos.show();
+            
+        }
+        catch(Exception e){
+            
+        }
+        
     }//GEN-LAST:event_mniIndividualesActionPerformed
 
     private void mnuAcreditadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAcreditadosActionPerformed

@@ -34,16 +34,14 @@ class RadioButtonActionListener implements ActionListener{
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         JRadioButton rbtn = (JRadioButton)e.getSource();
         
-        /*if((rbtn.getText().equals("Casado")) || (rbtn.getText().equals("Unión Libre"))){
-            tabbedPanePrincipal.setEnabledAt(2, true);        
-        }else{
-            tabbedPanePrincipal.setEnabledAt(2, false);          
-        }*/
         switch (rbtn.getText()){
             case "Soltero":
                 tabbedPanePrincipal.setEnabledAt(2, false);
                 break;
             case "Divorciado":
+                tabbedPanePrincipal.setEnabledAt(2, false);
+                break;
+            case "Viudo":
                 tabbedPanePrincipal.setEnabledAt(2, false);
                 break;
             case "Casado":
@@ -64,12 +62,8 @@ class RadioButtonActionListener implements ActionListener{
                 tabbedPanePrincipal.setEnabledAt(3, true);
                 tabbedPanePrincipal.setEnabledAt(4, true);
                 break;
-           /* default: 
-                tabbedPanePrincipal.setEnabledAt(2, false);
-                tabbedPanePrincipal.setEnabledAt(3, false);
-                tabbedPanePrincipal.setEnabledAt(4, false);
-                break;*/
-            
+            case "Si":
+                pnl.setVisible(true);
         }
     }
     
