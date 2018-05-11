@@ -177,10 +177,10 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="jComboBox21" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="cmbNoZona" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -217,17 +217,19 @@
                               <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox21" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbNoZona" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -384,12 +386,8 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jComboBox2" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jComboBox3" min="-2" pref="60" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="dtcFechaNacimiento" min="-2" pref="205" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -413,13 +411,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dtcFechaNacimiento" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -439,7 +435,7 @@
                                   </Group>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="22" max="32767" attributes="0"/>
+                              <EmptySpace pref="25" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -449,42 +445,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Fecha de Nacimiento"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox1">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
-                            <StringItem index="0" value="D&#xed;a"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox2">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
-                            <StringItem index="0" value="Mes"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox3">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
-                            <StringItem index="0" value="A&#xf1;o"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
@@ -537,6 +497,17 @@
                         </Property>
                       </Properties>
                     </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="dtcFechaNacimiento">
+                      <Properties>
+                        <Property name="dateFormatString" type="java.lang.String" value="d-MM-yyyy"/>
+                        <Property name="maxSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
+                          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,0,0,2,75,-49,-34,-122,-16,120"/>
+                        </Property>
+                        <Property name="minSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
+                          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-3,-3,-81,-92,-11,16,120"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel5">
@@ -569,7 +540,7 @@
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                              <Component id="jSpinner1" min="-2" pref="70" max="-2" attributes="0"/>
+                                              <Component id="spnNoDependientesEco" min="-2" pref="70" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -601,7 +572,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="spnNoDependientesEco" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
@@ -862,8 +833,15 @@
                     <Component class="javax.swing.JComboBox" name="jComboBox4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
+                          <StringArray count="8">
                             <StringItem index="0" value="Seleccione"/>
+                            <StringItem index="1" value="Primaria"/>
+                            <StringItem index="2" value="Secundaria"/>
+                            <StringItem index="3" value="Preparatoria"/>
+                            <StringItem index="4" value="Carrera T&#xe9;cnica"/>
+                            <StringItem index="5" value="Carrera Trunca"/>
+                            <StringItem index="6" value="Licenciatura"/>
+                            <StringItem index="7" value="Maestria"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -955,7 +933,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JSpinner" name="jSpinner1">
+                    <Component class="javax.swing.JSpinner" name="spnNoDependientesEco">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                           <SpinnerModel initial="1" maximum="15" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -991,8 +969,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jSeparator5" max="32767" attributes="0"/>
-                                          <Component id="jTextField3" max="32767" attributes="0"/>
-                                          <Component id="jComboBox6" pref="220" max="32767" attributes="0"/>
+                                          <Component id="txtIdOficial" max="32767" attributes="0"/>
+                                          <Component id="cmbTipoId" pref="220" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1008,14 +986,14 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtIdOficial" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbTipoId" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="13" max="32767" attributes="0"/>
                           </Group>
@@ -1028,7 +1006,7 @@
                         <Property name="text" type="java.lang.String" value="No. Identificaci&#xf3;n Oficial"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField3">
+                    <Component class="javax.swing.JTextField" name="txtIdOficial">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
@@ -1037,10 +1015,10 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel15">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Tipo de idenficicaci&#xf3;n"/>
+                        <Property name="text" type="java.lang.String" value="Tipo de idenficaci&#xf3;n"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox6">
+                    <Component class="javax.swing.JComboBox" name="cmbTipoId">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="3">
@@ -1166,7 +1144,7 @@
                     <Property name="text" type="java.lang.String" value="N&#xfa;mero de Zona"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox21">
+                <Component class="javax.swing.JComboBox" name="cmbNoZona">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -1216,7 +1194,7 @@
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1286,9 +1264,9 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jComboBox8" pref="224" max="32767" attributes="0"/>
+                                                  <Component id="cmbCiudadDomicilio" pref="224" max="32767" attributes="0"/>
                                                   <Component id="cmbEstadoDomicilio" max="32767" attributes="0"/>
-                                                  <Component id="jComboBox15" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cmbColoniaDomicilio" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1312,18 +1290,18 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                              <Component id="jComboBox9" min="-2" pref="156" max="-2" attributes="0"/>
+                                              <Component id="cmbTipoVivienda" min="-2" pref="156" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jSpinner2" min="-2" pref="90" max="-2" attributes="0"/>
+                                              <Component id="spnAñosResidencia" min="-2" pref="90" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jComboBox10" min="-2" pref="156" max="-2" attributes="0"/>
+                                      <Component id="cmbTipoAsentamiento" min="-2" pref="156" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -1391,17 +1369,17 @@
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="spnAñosResidencia" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbTipoVivienda" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbTipoAsentamiento" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1419,13 +1397,13 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jComboBox8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbCiudadDomicilio" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbColoniaDomicilio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
@@ -1504,7 +1482,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox8">
+                <Component class="javax.swing.JComboBox" name="cmbCiudadDomicilio">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -1580,7 +1558,7 @@
                     <Property name="text" type="java.lang.String" value="Tipo de vivienda"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox9">
+                <Component class="javax.swing.JComboBox" name="cmbTipoVivienda">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -1597,7 +1575,7 @@
                     <Property name="text" type="java.lang.String" value="Tipo de asentamiento"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox10">
+                <Component class="javax.swing.JComboBox" name="cmbTipoAsentamiento">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -1611,7 +1589,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox15">
+                <Component class="javax.swing.JComboBox" name="cmbColoniaDomicilio">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -1623,7 +1601,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinner2">
+                <Component class="javax.swing.JSpinner" name="spnA&#xf1;osResidencia">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                       <SpinnerModel initial="0" maximum="50" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -1754,7 +1732,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jTextField6" pref="100" max="32767" attributes="0"/>
+                                      <Component id="txtLadaCelular" pref="100" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
@@ -1762,7 +1740,7 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jSeparator15" pref="100" max="32767" attributes="0"/>
                                           <Component id="jSeparator14" max="32767" attributes="0"/>
-                                          <Component id="jTextField9" pref="100" max="32767" attributes="0"/>
+                                          <Component id="txtNoCelular" pref="100" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1776,14 +1754,14 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtLadaCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jSeparator14" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNoCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jSeparator15" min="-2" pref="10" max="-2" attributes="0"/>
@@ -1802,7 +1780,7 @@
                         <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField6">
+                    <Component class="javax.swing.JTextField" name="txtLadaCelular">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1815,17 +1793,17 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField6KeyTyped"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLadaCelularKeyTyped"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField9">
+                    <Component class="javax.swing.JTextField" name="txtNoCelular">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField9KeyTyped"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNoCelularKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator14">
@@ -1857,8 +1835,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField12" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField13" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="txtLadaReferencia" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNoReferencia" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
@@ -1878,7 +1856,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField12" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtLadaReferencia" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
@@ -1886,7 +1864,7 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField13" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNoReferencia" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
@@ -1918,19 +1896,22 @@
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator19">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField12">
+                    <Component class="javax.swing.JTextField" name="txtLadaReferencia">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField13">
+                    <Component class="javax.swing.JTextField" name="txtNoReferencia">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNoReferenciaActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1957,10 +1938,10 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtTelefonoFijo" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="txtLadaFijo" min="-2" pref="100" max="-2" attributes="0"/>
                                   <Component id="jSeparator16" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   <Component id="jSeparator17" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="jTextField11" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="txtNoFijo" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="21" max="32767" attributes="0"/>
                           </Group>
@@ -1971,7 +1952,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtTelefonoFijo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtLadaFijo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
@@ -1979,7 +1960,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNoFijo" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jSeparator17" min="-2" pref="10" max="-2" attributes="0"/>
@@ -2002,14 +1983,14 @@
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator17">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtTelefonoFijo">
+                    <Component class="javax.swing.JTextField" name="txtLadaFijo">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField11">
+                    <Component class="javax.swing.JTextField" name="txtNoFijo">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
@@ -2102,9 +2083,9 @@
                                       <Component id="jSeparator22" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtNombreConyugue" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="txtNombreC" min="-2" pref="180" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtSegundoNombreConyugue" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="txt2doNombreC" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2118,9 +2099,9 @@
                                       <Component id="jSeparator23" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtApellidoPaternoConyugue" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="txtApellidoPaternoC" min="-2" pref="178" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtApellidoMaternoConyugue" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="txtApellidoMaternoC" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2146,8 +2127,8 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNombreConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtSegundoNombreConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNombreC" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt2doNombreC" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2157,8 +2138,8 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtApellidoPaternoConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtApellidoMaternoConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtApellidoPaternoC" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtApellidoMaternoC" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2174,7 +2155,7 @@
                           <Component id="jPanel21" min="-2" max="-2" attributes="0"/>
                           <Component id="jPanel20" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="223" max="32767" attributes="0"/>
+                      <EmptySpace pref="231" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2256,14 +2237,14 @@
                 <Property name="text" type="java.lang.String" value="Apellidos"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNombreConyugue">
+            <Component class="javax.swing.JTextField" name="txtNombreC">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtApellidoPaternoConyugue">
+            <Component class="javax.swing.JTextField" name="txtApellidoPaternoC">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -2274,7 +2255,7 @@
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator21">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtSegundoNombreConyugue">
+            <Component class="javax.swing.JTextField" name="txt2doNombreC">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -2283,14 +2264,14 @@
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator22">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtApellidoMaternoConyugue">
+            <Component class="javax.swing.JTextField" name="txtApellidoMaternoC">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidoMaternoConyugueActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidoMaternoCActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator23">
@@ -2317,16 +2298,16 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel47" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel48" max="32767" attributes="0"/>
+                                      <Component id="lblNacionalidadC" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jComboBox11" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbDiaNacimientoC" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jComboBox12" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="cmbMesNacimientoC" min="-2" pref="120" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox13" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="cmbAñoNacimientoC" min="-2" pref="60" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
@@ -2337,7 +2318,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblEdad1" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="lblEdadC" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2352,15 +2333,15 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbDiaNacimientoC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbMesNacimientoC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbAñoNacimientoC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblEdad1" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="lblEdadC" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                                       <Component id="jLabel45" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -2371,7 +2352,7 @@
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel48" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="lblNacionalidadC" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel39" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2387,7 +2368,7 @@
                     <Property name="text" type="java.lang.String" value="Fecha de Nacimiento"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox11">
+                <Component class="javax.swing.JComboBox" name="cmbDiaNacimientoC">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -2399,7 +2380,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox12">
+                <Component class="javax.swing.JComboBox" name="cmbMesNacimientoC">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -2411,7 +2392,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox13">
+                <Component class="javax.swing.JComboBox" name="cmbA&#xf1;oNacimientoC">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -2428,7 +2409,7 @@
                     <Property name="text" type="java.lang.String" value="Edad"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblEdad1">
+                <Component class="javax.swing.JLabel" name="lblEdadC">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -2465,7 +2446,7 @@
                     <Property name="text" type="java.lang.String" value="Nacionalidad"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel48">
+                <Component class="javax.swing.JLabel" name="lblNacionalidadC">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -2497,11 +2478,11 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="rbtnEmpleadoConyugue" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbtnEmpleadoC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                          <Component id="rbtnNegocioConyugue" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbtnNegocioC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="btnAmbos" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAmbosC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -2511,9 +2492,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rbtnEmpleadoConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtnNegocioConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAmbos" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbtnEmpleadoC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbtnNegocioC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAmbosC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -2521,7 +2502,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JRadioButton" name="rbtnEmpleadoConyugue">
+                <Component class="javax.swing.JRadioButton" name="rbtnEmpleadoC">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2532,7 +2513,7 @@
                     <Property name="text" type="java.lang.String" value="Empleado"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rbtnNegocioConyugue">
+                <Component class="javax.swing.JRadioButton" name="rbtnNegocioC">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2543,7 +2524,7 @@
                     <Property name="text" type="java.lang.String" value="Negocio"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="btnAmbos">
+                <Component class="javax.swing.JRadioButton" name="btnAmbosC">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2577,9 +2558,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="rbtnFemeninoConyugue" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbtnFemeninoC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="rbtnMasculinoConyugue" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbtnMasculinoC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2589,15 +2570,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rbtnFemeninoConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtnMasculinoConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbtnFemeninoC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbtnMasculinoC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JRadioButton" name="rbtnFemeninoConyugue">
+                <Component class="javax.swing.JRadioButton" name="rbtnFemeninoC">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2608,7 +2589,7 @@
                     <Property name="text" type="java.lang.String" value="Femenino"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rbtnMasculinoConyugue">
+                <Component class="javax.swing.JRadioButton" name="rbtnMasculinoC">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2644,7 +2625,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jSeparator26" max="32767" attributes="0"/>
-                              <Component id="txtCurpConyugue" max="32767" attributes="0"/>
+                              <Component id="txtCurpC" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton4" min="-2" max="-2" attributes="0"/>
@@ -2656,7 +2637,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtCurpConyugue" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCurpC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -2672,14 +2653,14 @@
                     <Property name="text" type="java.lang.String" value="Generar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtCurpConyugue">
+                <Component class="javax.swing.JTextField" name="txtCurpC">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCurpConyugueActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCurpCActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator26">
@@ -2782,7 +2763,7 @@
                       <Component id="jSeparator33" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jPanel24" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="116" max="32767" attributes="0"/>
+                      <EmptySpace pref="124" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3236,7 +3217,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator42" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace pref="222" max="32767" attributes="0"/>
+                      <EmptySpace pref="230" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3255,8 +3236,10 @@
             <Component class="javax.swing.JComboBox" name="jComboBox16">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Seleccione..."/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="Seleccione"/>
+                    <StringItem index="1" value="Formal"/>
+                    <StringItem index="2" value="Informal"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -3614,6 +3597,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
