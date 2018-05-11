@@ -9,6 +9,8 @@ import Negocio.Logica;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Label;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -23,6 +25,7 @@ import java.time.Period;
 import java.util.Calendar;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -38,6 +41,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     
     char validarCampoNumerico, validarCampoLetras;
     RadioButtonActionListener actionListener, actionListener2;
+    DateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+    String fechaChooser;
     
     /**
      * Creates new form frmDatosGeneralesCliente
@@ -70,7 +75,30 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                CalcularEdad();
+                try{
+                    
+                    fechaChooser= ""+dt.format(dtcFechaNacimiento.getDate());
+                    JOptionPane.showMessageDialog(null, "fecha"+fechaChooser);
+                    CalcularEdad(fechaChooser, lblEdad);
+                    
+                }catch(Exception e){
+                    e.printStackTrace();
+                } 
+            }
+        });
+        
+        dtcFechaNacimientoC.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+               // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            try{
+                    fechaChooser= ""+dt.format(dtcFechaNacimientoC.getDate());
+                    JOptionPane.showMessageDialog(null, "fecha"+fechaChooser);
+                    CalcularEdad(fechaChooser, lblEdadC);
+                    
+                }catch(Exception e){
+                    e.printStackTrace();
+                } 
             }
         });
         
@@ -234,9 +262,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jSeparator23 = new javax.swing.JSeparator();
         jPanel19 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
-        cmbDiaNacimientoC = new javax.swing.JComboBox<>();
-        cmbMesNacimientoC = new javax.swing.JComboBox<>();
-        cmbAñoNacimientoC = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
         lblEdadC = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
@@ -244,6 +269,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         cmbEntidadFederativaCon = new javax.swing.JComboBox<>();
         jLabel47 = new javax.swing.JLabel();
         lblNacionalidadC = new javax.swing.JLabel();
+        dtcFechaNacimientoC = new com.toedter.calendar.JDateChooser();
         jPanel20 = new javax.swing.JPanel();
         rbtnEmpleadoC = new javax.swing.JRadioButton();
         rbtnNegocioC = new javax.swing.JRadioButton();
@@ -255,6 +281,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         txtCurpC = new javax.swing.JTextField();
         jSeparator26 = new javax.swing.JSeparator();
+        jLabel48 = new javax.swing.JLabel();
         pnlInformacionLaboral = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtNombreEmpresa = new javax.swing.JTextField();
@@ -900,8 +927,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlDatosPersonalesSolicitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosPersonalesSolicitanteLayout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlDatosPersonalesSolicitanteLayout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1490,12 +1516,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
         jLabel38.setText("Fecha de Nacimiento");
 
-        cmbDiaNacimientoC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Día" }));
-
-        cmbMesNacimientoC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes" }));
-
-        cmbAñoNacimientoC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año" }));
-
         jLabel39.setText("Edad");
 
         lblEdadC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1525,11 +1545,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                         .addGroup(jPanel19Layout.createSequentialGroup()
                             .addComponent(jLabel38)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cmbDiaNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cmbMesNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cmbAñoNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dtcFechaNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel19Layout.createSequentialGroup()
                             .addComponent(jLabel46)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1546,12 +1562,10 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel38)
-                    .addComponent(cmbDiaNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMesNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbAñoNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addComponent(dtcFechaNacimientoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1675,6 +1689,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addGap(1, 1, 1))
         );
 
+        jLabel48.setText("jLabel48");
+
         javax.swing.GroupLayout pnlDatosConyugueLayout = new javax.swing.GroupLayout(pnlDatosConyugue);
         pnlDatosConyugue.setLayout(pnlDatosConyugueLayout);
         pnlDatosConyugueLayout.setHorizontalGroup(
@@ -1714,6 +1730,10 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDatosConyugueLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel48)
+                .addGap(388, 388, 388))
         );
         pnlDatosConyugueLayout.setVerticalGroup(
             pnlDatosConyugueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1747,7 +1767,9 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addGroup(pnlDatosConyugueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGap(85, 85, 85)
+                .addComponent(jLabel48)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         tbpDatosGeneralesCliente.addTab("Datos del Cónyugue / Pareja", pnlDatosConyugue);
@@ -2482,18 +2504,18 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
        
     }
     
-    public void CalcularEdad(){
+    public void CalcularEdad(String FechaChooser, JLabel lblEdad){
         try{
-        DateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        
-        String fechaChooser= ""+dt.format(dtcFechaNacimiento.getDate());
+       
+        String fechaChooser = FechaChooser;
         LocalDate FechaActual = LocalDate.now();
         LocalDate fechaNacimiento = LocalDate.parse(fechaChooser);
         Period periodo = Period.between(fechaNacimiento, FechaActual);
         
         lblEdad.setText(""+periodo.getYears());
             
-        }catch(Exception e){
+        }
+        catch(Exception e){
             e.printStackTrace();
         }
     }
@@ -2511,25 +2533,23 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chcbTelefonoCelular;
     private javax.swing.JCheckBox chcbTelefonoFijo;
     private javax.swing.JCheckBox chcbTelefonoReferencia;
-    private javax.swing.JComboBox<String> cmbAñoNacimientoC;
     private javax.swing.JComboBox<String> cmbCiudadDomicilio;
     private javax.swing.JComboBox<String> cmbCiudadEmpresa;
     private javax.swing.JComboBox<String> cmbCiudadEmpresa1;
     private javax.swing.JComboBox<String> cmbColoniaDomicilio;
     private javax.swing.JComboBox<String> cmbColoniaEmpresa;
     private javax.swing.JComboBox<String> cmbColoniaEmpresa1;
-    private javax.swing.JComboBox<String> cmbDiaNacimientoC;
     private javax.swing.JComboBox<String> cmbEntidadFederativa;
     private javax.swing.JComboBox<String> cmbEntidadFederativaCon;
     private javax.swing.JComboBox<String> cmbEstadoDomicilio;
     private javax.swing.JComboBox<String> cmbEstadoEmpresa;
     private javax.swing.JComboBox<String> cmbEstadoNegocio;
-    private javax.swing.JComboBox<String> cmbMesNacimientoC;
     private javax.swing.JComboBox<String> cmbNoZona;
     private javax.swing.JComboBox<String> cmbTipoAsentamiento;
     private javax.swing.JComboBox<String> cmbTipoId;
     private javax.swing.JComboBox<String> cmbTipoVivienda;
     private com.toedter.calendar.JDateChooser dtcFechaNacimiento;
+    private com.toedter.calendar.JDateChooser dtcFechaNacimientoC;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -2582,6 +2602,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
