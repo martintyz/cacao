@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.sql.ResultSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -131,6 +132,11 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblMunicipio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMunicipioMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblMunicipio);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -263,14 +269,20 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
     private void tblEntidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEntidadMouseClicked
         // TODO add your handling code here:
         int row=tblEntidad.rowAtPoint(evt.getPoint());
-        int col=tblEntidad.columnAtPoint(evt.getPoint());
-        
         lblEntidad.setText((String)tblEntidad.getModel().getValueAt(row, 1));
+        
     }//GEN-LAST:event_tblEntidadMouseClicked
 
     private void btnListaMuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaMuniActionPerformed
         // TODO add your handling code here:
+       llenarMunicipios();
     }//GEN-LAST:event_btnListaMuniActionPerformed
+
+    private void tblMunicipioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMunicipioMouseClicked
+        // TODO add your handling code here:
+        int row=tblMunicipio.rowAtPoint(evt.getPoint());
+        lblMunicipio.setText((String)tblMunicipio.getModel().getValueAt(row, 1));
+    }//GEN-LAST:event_tblMunicipioMouseClicked
     public void llenarEntidades(){
         try{
             Logica oLogica=new Logica();
@@ -286,18 +298,41 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
                     fila[2]=ent.getString(3);
                     entidades.addRow(fila);
                 }
+                tblEntidad.setModel(entidades);
+                tblEntidad.setAutoCreateColumnsFromModel(true);
+                JTableColumnsWidth.setWidth(tblEntidad,611,10,70,20 );
+                tblEntidad.setRowSelectionInterval(0, 0);
+                lblEntidad.setText((String)tblEntidad.getModel().getValueAt(0, 1));
             }
-            tblEntidad.setModel(entidades);
-            tblEntidad.setAutoCreateColumnsFromModel(true);
-            JTableColumnsWidth.setWidth(tblEntidad,611,10,70,20 );
-            tblEntidad.setRowSelectionInterval(0, 0);
-            lblEntidad.setText((String)tblEntidad.getModel().getValueAt(0, 1));
+            
         }catch(Exception e){
             e.printStackTrace();
         }
     }
     void llenarMunicipios(){
-        
+         try{
+            Logica oLogica=new Logica();
+            ResultSet muni=oLogica.Municipios((int) tblEntidad.getModel().getValueAt(tblEntidad.getSelectedRow(),0));
+            String[] titulos={"Código","Municipio"};
+            DefaultTableModel municipios=new DefaultTableModel(null, titulos);
+            int[] ancho={10,60};
+            Object[] fila=new Object[2];
+            if(muni!=null){
+                while(muni.next()){
+                    fila[0]=muni.getInt(1);
+                    fila[1]=muni.getString(2);
+                    municipios.addRow(fila);
+                }
+                tblMunicipio.setModel(municipios);
+                tblMunicipio.setAutoCreateColumnsFromModel(true);
+                JTableColumnsWidth.setWidth(tblMunicipio, 611, 10,60);
+                tblMunicipio.setRowSelectionInterval(0, 0);
+                lblMunicipio.setText((String)tblMunicipio.getModel().getValueAt(0, 1));
+            }
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
