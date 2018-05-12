@@ -118,8 +118,6 @@ public class frmMenusys extends javax.swing.JFrame {
             frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
             jdpSistema.add(datos);
             jdpSistema.moveToFront(datos);
-            datos.setSize(jdpSistema.getWidth(), jdpSistema.getHeight());
-            datos.setLocation(0, 0);
             datos.show();
             
         }
