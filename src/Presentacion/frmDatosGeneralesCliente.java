@@ -1522,8 +1522,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
         jLabel46.setText("Entidad Federativa de Nacimiento");
 
-        cmbEntidadFederativaCon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "México" }));
-
         jLabel47.setText("Nacionalidad");
 
         lblNacionalidadC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
