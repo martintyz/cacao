@@ -78,7 +78,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 try{
                     
                     fechaChooser= ""+dt.format(dtcFechaNacimiento.getDate());
-                    JOptionPane.showMessageDialog(null, "fecha"+fechaChooser);
                     CalcularEdad(fechaChooser, lblEdad);
                     
                 }catch(Exception e){
@@ -93,7 +92,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             try{
                     fechaChooser= ""+dt.format(dtcFechaNacimientoC.getDate());
-                    JOptionPane.showMessageDialog(null, "fecha"+fechaChooser);
                     CalcularEdad(fechaChooser, lblEdadC);
                     
                 }catch(Exception e){
@@ -2007,7 +2005,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
         jLabel60.setText("Estatus del Negocio");
 
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Formal", "Informal" }));
+        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
 
         jLabel61.setText("Giro");
 
