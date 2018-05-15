@@ -116,6 +116,9 @@ public class frmMenusys extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null, "Click");
         try{
             frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
+            Dimension desktopSize = jdpSistema.getSize();
+            Dimension FrameSize = datos.getSize();
+            datos.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
             jdpSistema.add(datos);
             jdpSistema.moveToFront(datos);
             datos.show();
