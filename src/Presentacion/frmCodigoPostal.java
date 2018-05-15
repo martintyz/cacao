@@ -8,6 +8,7 @@ package Presentacion;
 import Negocio.Logica;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
@@ -156,6 +157,11 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblCP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCPMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblCP);
 
         btnAgregarCP.setBackground(new java.awt.Color(255, 255, 255));
@@ -163,12 +169,24 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         btnAgregarCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnAgregarCP.setBorderPainted(false);
         btnAgregarCP.setContentAreaFilled(false);
+        btnAgregarCP.setEnabled(false);
+        btnAgregarCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCPActionPerformed(evt);
+            }
+        });
 
         btnListaCP.setBackground(new java.awt.Color(255, 255, 255));
         btnListaCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
         btnListaCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnListaCP.setBorderPainted(false);
         btnListaCP.setContentAreaFilled(false);
+        btnListaCP.setEnabled(false);
+        btnListaCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaCPActionPerformed(evt);
+            }
+        });
 
         btnListaMuni.setBackground(new java.awt.Color(255, 255, 255));
         btnListaMuni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
@@ -186,6 +204,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         btnEditarCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnEditarCP.setBorderPainted(false);
         btnEditarCP.setContentAreaFilled(false);
+        btnEditarCP.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -270,7 +289,10 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int row=tblEntidad.rowAtPoint(evt.getPoint());
         lblEntidad.setText((String)tblEntidad.getModel().getValueAt(row, 1));
-        
+        tblMunicipio.setModel(new DefaultTableModel());
+        tblCP.setModel(new DefaultTableModel());
+        lblMunicipio.setText("");
+        lblCodigoP.setText("");
     }//GEN-LAST:event_tblEntidadMouseClicked
 
     private void btnListaMuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaMuniActionPerformed
@@ -282,13 +304,70 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int row=tblMunicipio.rowAtPoint(evt.getPoint());
         lblMunicipio.setText((String)tblMunicipio.getModel().getValueAt(row, 1));
+        tblCP.setModel(new DefaultTableModel());
+        lblCodigoP.setText("");
+        btnListaCP.setEnabled(true);
     }//GEN-LAST:event_tblMunicipioMouseClicked
+
+    private void btnListaCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaCPActionPerformed
+        // TODO add your handling code here:
+        llenarCP();
+        btnEditarCP.setEnabled(true);
+        btnAgregarCP.setEnabled(true);
+    }//GEN-LAST:event_btnListaCPActionPerformed
+
+    private void tblCPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCPMouseClicked
+        // TODO add your handling code here:
+        int row=tblCP.rowAtPoint(evt.getPoint());
+        lblCodigoP.setText((String)tblCP.getModel().getValueAt(row, 1));
+    }//GEN-LAST:event_tblCPMouseClicked
+
+    private void btnAgregarCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCPActionPerformed
+        // TODO add your handling code here:
+        Frame f=JOptionPane.getFrameForComponent(this);
+        frmDetalleCodigoP cp=new frmDetalleCodigoP(f, true);
+        Dimension desktopSize = this.getParent().getSize();
+        Dimension FrameSize = cp.getSize();
+        cp.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        cp.setVisible(true);
+        
+    }//GEN-LAST:event_btnAgregarCPActionPerformed
+    public void llenarCP(){
+        try{
+            Logica oLogica=new Logica();
+            ResultSet cp=oLogica.CP((int) tblMunicipio.getModel().getValueAt(tblMunicipio.getSelectedRow(),0));
+            String[] titulos={"Código","Colonia","Código Postal"};
+            DefaultTableModel codigop=new DefaultTableModel(null, titulos){
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+                }};
+            Object[] fila=new Object[3];
+            if(cp!=null){
+                while(cp.next()){
+                    fila[0]=cp.getInt(1);
+                    fila[1]=cp.getString(2);
+                    fila[2]=cp.getString(3);
+                    codigop.addRow(fila);
+                }
+                tblCP.setModel(codigop);
+                tblCP.setAutoCreateColumnsFromModel(true);
+                JTableColumnsWidth.setWidth(tblCP,611,10,70,20);
+                tblCP.setRowSelectionInterval(0, 0);
+                lblCodigoP.setText((String) tblCP.getModel().getValueAt(0, 1));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void llenarEntidades(){
         try{
             Logica oLogica=new Logica();
             ResultSet ent=oLogica.Entidades();
             String[] titulos={"Código","Entidad federativa","Abreviatura"};
-            DefaultTableModel entidades=new DefaultTableModel(null, titulos);
+            DefaultTableModel entidades=new DefaultTableModel(null, titulos){
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+                }};
             int[] ancho={5,100,8};
             Object[] fila=new Object[3];
             if (ent!=null){
@@ -314,7 +393,10 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
             Logica oLogica=new Logica();
             ResultSet muni=oLogica.Municipios((int) tblEntidad.getModel().getValueAt(tblEntidad.getSelectedRow(),0));
             String[] titulos={"Código","Municipio"};
-            DefaultTableModel municipios=new DefaultTableModel(null, titulos);
+            DefaultTableModel municipios=new DefaultTableModel(null, titulos){
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+                }};
             int[] ancho={10,60};
             Object[] fila=new Object[2];
             if(muni!=null){

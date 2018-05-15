@@ -67,7 +67,18 @@ public class Logica {
             if(muni!=null)
                 return muni;
         }catch(Exception e){
-            System.out.println("Ha ocurrido un error crgando la lista de Municipios "+e.getMessage());
+            System.out.println("Ha ocurrido un error cargando la lista de Municipios "+e.getMessage());
+        }
+        return null;
+    }
+    public ResultSet CP(int idmuni){
+        try{
+            ManejoDatos mdDatos=new ManejoDatos();
+            ResultSet cp=mdDatos.CP(idmuni);
+            if(cp!=null)
+                return cp;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando la lista de Códigos Postales "+e.getMessage());
         }
         return null;
     }
