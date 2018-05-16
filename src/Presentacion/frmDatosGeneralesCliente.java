@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Negocio.Logica;
+import groovyjarjarantlr.collections.impl.Vector;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -23,6 +24,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -33,6 +35,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -250,8 +253,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         chcbTelefonoFijo = new javax.swing.JCheckBox();
         chcbTelefonoReferencia = new javax.swing.JCheckBox();
         jPanel13 = new javax.swing.JPanel();
-        btnAgregar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDomicilio = new javax.swing.JTable();
         pnlDatosConyugue = new javax.swing.JPanel();
@@ -1529,6 +1532,16 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Domiclio"));
 
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Modify.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Create.png"))); // NOI18N
         btnAgregar.setBorder(null);
@@ -1538,11 +1551,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-
-        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Modify.png"))); // NOI18N
-        btnEditar.setBorder(null);
-        btnEditar.setContentAreaFilled(false);
 
         tblDomicilio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1567,23 +1575,25 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap(777, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEditar)
-                .addGap(18, 18, 18)
-                .addComponent(btnAgregar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAgregar)
+                .addGap(8, 8, 8))
             .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane3)
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnEditar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditar)
+                    .addComponent(btnAgregar))
+                .addGap(13, 13, 13)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -1605,7 +1615,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1913,7 +1923,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addGroup(pnlDatosConyugueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         tbpDatosGeneralesCliente.addTab("Datos del Cónyugue / Pareja", pnlDatosConyugue);
@@ -2161,7 +2171,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator33, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         tbpDatosGeneralesCliente.addTab("Informacion Laboral", pnlInformacionLaboral);
@@ -2414,7 +2424,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                     .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator42, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
 
         tbpDatosGeneralesCliente.addTab("Actividad Económica", pnlActividadEconomica);
@@ -2435,15 +2445,15 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(tbpDatosGeneralesCliente)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tbpDatosGeneralesCliente)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2682,6 +2692,10 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         domi.setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     public static void setEnableContainer(Container c, boolean band) {
 
     Component [] components = c.getComponents();
@@ -2695,6 +2709,32 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     }
     
 }
+    public void llenaTablaDomicilios(DomicilioTemporal objDomicilio){
+        try{
+           String Titulo[]={"Código","Descripción","Calle"};
+        
+            DefaultTableModel dfDomicilio = new DefaultTableModel(null, Titulo);
+            
+            ArrayList<DomicilioTemporal> lista = new ArrayList<DomicilioTemporal>();            
+            lista.add(objDomicilio);
+            
+            String[][] matriz = new String[lista.size()][3];
+            for (int i=0; i<lista.size();i++){
+            
+                matriz[i][0]=lista.get(i).getCalle();
+                matriz[i][1]=lista.get(i).getCalleRef1();
+                matriz[i][2]=lista.get(i).getCalleRef2();
+            }
+            dfDomicilio.addRow(matriz);
+            tblDomicilio.setModel(dfDomicilio);
+            tblDomicilio.setAutoCreateColumnsFromModel(true);
+            JOptionPane.showMessageDialog(null,""+ matriz[0][1]);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
     
     public void llenaCombosEstado(){
         try{
