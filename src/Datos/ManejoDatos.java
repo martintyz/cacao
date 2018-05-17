@@ -32,6 +32,20 @@ public class ManejoDatos {
         }
         return null;
     }
+    public ResultSet LoginEmpresa(int idusuario,int idempresa){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareStatement("{call spConsultaUsuarioEmpresa(?,?)}");
+            pstm.setInt(1, idusuario);
+            pstm.setInt(2, idempresa);
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
     
     public ResultSet Empresas(){
             try{

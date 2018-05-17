@@ -49,6 +49,17 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet LoginEmpresa(int idusuario,int idempresa){
+        try{
+            ManejoDatos mdDatos=new ManejoDatos();
+            ResultSet perm=mdDatos.LoginEmpresa(idusuario, idempresa);
+            if(perm!=null)
+                return perm;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando los permisos del usuario en la empresa "+e.getMessage());
+        }
+        return null;
+    }
     public ResultSet Entidades(){
         try{
             ManejoDatos mdDatos=new ManejoDatos();

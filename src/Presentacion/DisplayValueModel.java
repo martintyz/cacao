@@ -10,9 +10,24 @@ package Presentacion;
  * @author SISTEMAS5
  */
 public class DisplayValueModel {
-     public Object displayMember;
-    public Object valueMember;
+
+    /**
+     * @return the displayMember
+     */
+    public Object getDisplayMember() {
+        return displayMember.toString();
+    }
+
+    /**
+     * @return the valueMember
+     */
+    public Object getValueMember() {
+        return valueMember;
+    }
+     private Object displayMember;
+    private Object valueMember;
     
+     
     public DisplayValueModel(Object display,Object value)
     {
         displayMember=display;
@@ -22,6 +37,6 @@ public class DisplayValueModel {
     @Override
     public String toString()
     {
-        return displayMember.toString();
+        return getDisplayMember().toString();
     }
 }
