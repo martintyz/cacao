@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import Negocio.Logica;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,8 @@ public class frmDomicilio extends javax.swing.JDialog {
     public frmDomicilio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        llenaComboEstado();
     }
 
     /**
@@ -423,14 +427,28 @@ public class frmDomicilio extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void obtenerCamposDomicilio(){
-        DomicilioTemporal domTemporal =  new DomicilioTemporal(txtCalle.getText(), txtCalle1.getText(),txtCalle2.getText(),txtNoInterior.getText(),txtNoExterior.getText(),
+        DomicilioTemporal domTemporal =  new DomicilioTemporal(txtDescDomicilio.getText() ,txtCalle.getText(), txtCalle1.getText(),txtCalle2.getText(),txtNoInterior.getText(),txtNoExterior.getText(),
                                                                txtCodigoPostal.getText(),cmbColoniaDomicilio.getSelectedItem().toString(),cmbCiudadDomicilio.getSelectedItem().toString(),
                                                                cmbEstadoDomicilio.getSelectedItem().toString(),cmbTipoVivienda.getSelectedItem().toString(), cmbTipoAsentamiento.getSelectedItem().toString());
    // JOptionPane.showMessageDialog(null,""+domTemporal.getCalle()+""+domTemporal.getCalleRef1());   
-        frmDatosGeneralesCliente prueba = new frmDatosGeneralesCliente();
-        prueba.llenaTablaDomicilios(domTemporal);
+        frmDatosGeneralesCliente domicilioClient = new frmDatosGeneralesCliente();
+        domicilioClient.llenaTablaDomicilios(domTemporal);
+       
         dispose();
-        
+    }
+    
+    public void llenaComboEstado(){
+        try{
+            Logica oLogica=new Logica();
+            ResultSet ent=oLogica.Entidades();
+            while(ent.next()){
+                cmbEstadoDomicilio.addItem(ent.getString(2));
+            } 
+        }
+        catch(Exception e){
+              e.printStackTrace();
+        }
+       
     }
     /**
      * @param args the command line arguments
