@@ -19,6 +19,7 @@ import com.alee.laf.WebLookAndFeel;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 /**
@@ -140,6 +141,11 @@ public class frmLogin extends javax.swing.JFrame {
         cmbemp.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cmbemp.setBorder(null);
         cmbemp.setNextFocusableComponent(txtuser);
+        cmbemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbempActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 190, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -191,21 +197,36 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-//        Logica oLogica=new Logica();
-//        ResultSet emp=oLogica.Empresas();
-//        DefaultComboBoxModel mod=new DefaultComboBoxModel();
-//          cmbemp.removeAllItems();
-//        mod.addElement("Seleccione un campo");
-//        cmbemp.setModel(mod);
-//        try {
-//            while(emp.next()){
-//             DisplayValueModel dvm=new DisplayValueModel(emp.getObject(1),emp.getObject(2));
-//             //cmbemp.addItem(dvm);
-//            }
-//        } catch (SQLException e) {
-//        
-//            System.out.println("Error "+e.getMessage());
-//        }
+        Logica oLogica=new Logica();
+        ResultSet emp=oLogica.Empresas();
+        //DefaultComboBoxModel mod=new DefaultComboBoxModel();
+          cmbemp.removeAllItems();
+        //mod.addElement("Seleccione un campo");
+        //cmbemp.setModel(mod);
+        int cont=0;
+        try {
+            while(emp.next()){
+                cont++;
+            }
+            emp.beforeFirst();
+        }catch(Exception e){
+            System.out.println("Error "+e.getMessage());
+        }
+            Object[] matriz=new Object[cont];
+            int i=0;
+        try {
+            while(emp.next()){
+             DisplayValueModel dvm=new DisplayValueModel(emp.getObject(2),emp.getObject(1));
+             matriz[i]=dvm;
+             i++;
+             //cmbemp.addItem(dvm);
+             DefaultComboBoxModel mod=new DefaultComboBoxModel(matriz);
+             cmbemp.setModel(mod);
+            }
+        } catch (SQLException e) {
+        
+            System.out.println("Error "+e.getMessage());
+        }
 
     }//GEN-LAST:event_formWindowActivated
 
@@ -214,22 +235,36 @@ public class frmLogin extends javax.swing.JFrame {
         try{
             String  usuario = txtuser.getText();
             String pass= new String(txtpass.getPassword());
-            //DisplayValueModel cbm = (DisplayValueModel)cmbemp.getSelectedItem();
+            DisplayValueModel cmb = (DisplayValueModel)cmbemp.getSelectedItem();
             Logica oLogica=new Logica();
             ResultSet r=oLogica.Login(usuario, pass);
+            int iduser=0, empresa=0;
             if(r!=null){
                 if(r.next()){
-                    Usuario.setIiduser(r.getInt("idusuario"));
-                    Usuario.setcAlias(usuario);
-                    Usuario.setcPwd(pass);
-                    
-                    JOptionPane.showMessageDialog(null,"Bienvenido ");//+Usuario.getcNombre());
-                    this.setVisible(false);
-                    frmMenusys menu=new frmMenusys();
-                    menu.setVisible(true);
+                    iduser=r.getInt(1);
+                    empresa=(int)cmb.getValueMember();
+                
                 }
             }
-                
+            if(iduser!=0 & empresa!=0){
+            ResultSet lemp=oLogica.LoginEmpresa(iduser,empresa);
+                    if(lemp!=null){
+                        if(lemp.next()){
+                            if(lemp.getInt(1)==1){
+                                Usuario.setIiduser(iduser);
+                                Usuario.setcAlias(usuario); 
+                                Usuario.setcPwd(pass);
+                    
+                                JOptionPane.showMessageDialog(null,"Bienvenido ","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE,null);//+Usuario.getcNombre());
+                                this.setVisible(false);
+                                frmMenusys menu=new frmMenusys();
+                                menu.setVisible(true);
+                            }
+                        }else{
+                        JOptionPane.showMessageDialog(null, "El usuario no tiene permisos para ingresar a la empresa seleccionada.","Empresa Incorrecta",JOptionPane.ERROR_MESSAGE,null);
+                    }
+                    }
+        }
             
         }catch(Exception e){
             System.out.println("Error "+e.getMessage());
@@ -248,6 +283,11 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_lblSalirMouseClicked
+
+    private void cmbempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbempActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cmbempActionPerformed
 
     /**
      * @param args the command line arguments
