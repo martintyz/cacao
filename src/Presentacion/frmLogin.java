@@ -259,7 +259,9 @@ public class frmLogin extends javax.swing.JFrame {
                                 this.setVisible(false);
                                 frmMenusys menu=new frmMenusys();
                                 menu.setVisible(true);
-                            }
+                            }else{
+                        JOptionPane.showMessageDialog(null, "Se le ha suspendido el permiso de acceso a la empresa seleccionada.","Permiso suspendido",JOptionPane.ERROR_MESSAGE,null);
+                    }
                         }else{
                         JOptionPane.showMessageDialog(null, "El usuario no tiene permisos para ingresar a la empresa seleccionada.","Empresa Incorrecta",JOptionPane.ERROR_MESSAGE,null);
                     }
