@@ -1193,7 +1193,12 @@
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jPanel13" max="32767" attributes="0"/>
-                          <Component id="jPanel3" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel3" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lblprueba" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="309" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jPanel12" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
@@ -1204,7 +1209,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="lblprueba" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
@@ -2234,11 +2242,7 @@
                     <Component class="javax.swing.JTable" name="tblDomicilio">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="3" rowCount="0">
-                            <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
-                            <Column editable="false" title="Descripci&#xf3;n" type="java.lang.Object"/>
-                            <Column editable="false" title="Calle" type="java.lang.Object"/>
-                          </Table>
+                          <Table columnCount="0" rowCount="0"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -2246,6 +2250,11 @@
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="lblprueba">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jLabel48"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlDatosConyugue">
@@ -3146,6 +3155,10 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCiudadEmpresaActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbCiudadEmpresaKeyPressed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -3787,6 +3800,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

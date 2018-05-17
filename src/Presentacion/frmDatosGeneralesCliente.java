@@ -47,13 +47,14 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     RadioButtonActionListener actionListener, actionListener2;
     DateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
     String fechaChooser;
-    
+    int con = 0;
+ 
     /**
      * Creates new form frmDatosGeneralesCliente
      */
     public frmDatosGeneralesCliente() {
         initComponents();
-        
+            
         actionListener = new RadioButtonActionListener(tbpDatosGeneralesCliente);
         actionListener2 = new RadioButtonActionListener(pnlNoHijos);
        
@@ -74,7 +75,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         rbtnNegocio.addActionListener(actionListener);
         rbtnAmbos.addActionListener(actionListener);   
         rbtnHijosSi.addActionListener(actionListener2);
-               
+                     
         dtcFechaNacimiento.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -257,6 +258,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDomicilio = new javax.swing.JTable();
+        lblprueba = new javax.swing.JLabel();
         pnlDatosConyugue = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         rbtnSeparacionBienes = new javax.swing.JRadioButton();
@@ -1557,17 +1559,9 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Código", "Descripción", "Calle"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane3.setViewportView(tblDomicilio);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -1596,6 +1590,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblprueba.setText("jLabel48");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -1604,7 +1600,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblprueba)
+                        .addGap(309, 309, 309))
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -1612,7 +1612,9 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblprueba))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1954,6 +1956,16 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         cmbEstadoEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
 
         cmbCiudadEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cmbCiudadEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCiudadEmpresaActionPerformed(evt);
+            }
+        });
+        cmbCiudadEmpresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbCiudadEmpresaKeyPressed(evt);
+            }
+        });
 
         jLabel54.setText("Ciudad o municipio");
 
@@ -2439,6 +2451,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Erase.png"))); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2696,6 +2713,18 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cmbCiudadEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCiudadEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCiudadEmpresaActionPerformed
+
+    private void cmbCiudadEmpresaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbCiudadEmpresaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCiudadEmpresaKeyPressed
+
     public static void setEnableContainer(Container c, boolean band) {
 
     Component [] components = c.getComponents();
@@ -2711,7 +2740,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 }
     public void llenaTablaDomicilios(DomicilioTemporal objDomicilio){
         try{
-           String Titulo[]={"Código","Descripción","Calle"};
+            String Titulo[]={"Ejemplo","Descripción","Calle"};
         
             DefaultTableModel dfDomicilio = new DefaultTableModel(null, Titulo);
             
@@ -2724,11 +2753,27 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 matriz[i][0]=lista.get(i).getCalle();
                 matriz[i][1]=lista.get(i).getCalleRef1();
                 matriz[i][2]=lista.get(i).getCalleRef2();
+                dfDomicilio.addRow(matriz);
             }
-            dfDomicilio.addRow(matriz);
+            
+            Object[]row = {objDomicilio.getCalle(), objDomicilio.getCalleRef1()};
+             dfDomicilio.addRow(row);
+            
+            this.tblDomicilio.setModel(dfDomicilio);
+           // tblDomicilio.setAutoCreateColumnsFromModel(true);
+            
+            //JOptionPane.showMessageDialog(null,""+matriz[0][0]);
+            
+            //String x[][] = {};
+           
+          /*  String Titulo[]={"Código","Descripción","Calle"};
+            dfDomicilio = new DefaultTableModel(null, Titulo);
             tblDomicilio.setModel(dfDomicilio);
-            tblDomicilio.setAutoCreateColumnsFromModel(true);
-            JOptionPane.showMessageDialog(null,""+ matriz[0][1]);
+            dfDomicilio.insertRow(con,new Object[]{});
+            dfDomicilio.setValueAt(objDomicilio.getCalle(), con, 0);
+            dfDomicilio.setValueAt(objDomicilio.getCalleRef1(), con, 1);
+            dfDomicilio.setValueAt(objDomicilio.getCalleRef2(), con, 2);
+            con++;*/
 
         }catch(Exception e){
             e.printStackTrace();
@@ -2754,7 +2799,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         }
        
     }
-    
+       
     public void CalcularEdad(String FechaChooser, JLabel lblEdad){
         try{
        
@@ -2763,7 +2808,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         LocalDate fechaNacimiento = LocalDate.parse(fechaChooser);
         Period periodo = Period.between(fechaNacimiento, FechaActual);
         if (periodo.getYears()<= 18){
-            JOptionPane.showMessageDialog(null,"Verifique la fecha de nacimiento");
+            JOptionPane.showMessageDialog(null,"No puede solicitar credito");
         }else{
             lblEdad.setText(""+periodo.getYears());
         }
@@ -2957,6 +3002,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEdadC;
     private javax.swing.JLabel lblMeses;
     private javax.swing.JLabel lblMesesResidencia;
+    private javax.swing.JLabel lblprueba;
     private javax.swing.JPanel pnlActividadEconomica;
     private javax.swing.JPanel pnlDatosConyugue;
     private javax.swing.JPanel pnlDatosPersonalesSolicitante;
