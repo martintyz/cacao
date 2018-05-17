@@ -11,9 +11,10 @@ package Presentacion;
  */
 public class DomicilioTemporal {
 
-    private String Calle, CalleRef1, CalleRef2,NoInterior, NoExterior,CodigoPostal, Colonia,Ciudad, Estado,  TipoVivienda, TipoAsentamiento;
+    private String Descripcion, Calle, CalleRef1, CalleRef2,NoInterior, NoExterior,CodigoPostal, Colonia,Ciudad, Estado,  TipoVivienda, TipoAsentamiento;
 
-    public DomicilioTemporal(String Calle, String CalleRef1, String CalleRef2, String NoInterior, String NoExterior, String CodigoPostal, String Colonia, String Ciudad, String Estado, String TipoVivienda, String TipoAsentamiento) {
+    public DomicilioTemporal(String Descripcion, String Calle, String CalleRef1, String CalleRef2, String NoInterior, String NoExterior, String CodigoPostal, String Colonia, String Ciudad, String Estado, String TipoVivienda, String TipoAsentamiento) {
+        this.Descripcion = Descripcion;
         this.Calle = Calle;
         this.CalleRef1 = CalleRef1;
         this.CalleRef2 = CalleRef2;
@@ -27,6 +28,15 @@ public class DomicilioTemporal {
         this.TipoAsentamiento = TipoAsentamiento;
     }
 
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
+
+    
     public String getNoInterior() {
         return NoInterior;
     }
