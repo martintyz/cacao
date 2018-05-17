@@ -430,7 +430,7 @@ public class frmDomicilio extends javax.swing.JDialog {
         DomicilioTemporal domTemporal =  new DomicilioTemporal(txtDescDomicilio.getText() ,txtCalle.getText(), txtCalle1.getText(),txtCalle2.getText(),txtNoInterior.getText(),txtNoExterior.getText(),
                                                                txtCodigoPostal.getText(),cmbColoniaDomicilio.getSelectedItem().toString(),cmbCiudadDomicilio.getSelectedItem().toString(),
                                                                cmbEstadoDomicilio.getSelectedItem().toString(),cmbTipoVivienda.getSelectedItem().toString(), cmbTipoAsentamiento.getSelectedItem().toString());
-   // JOptionPane.showMessageDialog(null,""+domTemporal.getCalle()+""+domTemporal.getCalleRef1());   
+   // JOptionPane.showMessageDialog(null,""+domTemporal.getCalle()+""+domTemporal.getCalleRef1());          
         frmDatosGeneralesCliente domicilioClient = new frmDatosGeneralesCliente();
         domicilioClient.llenaTablaDomicilios(domTemporal);
        
