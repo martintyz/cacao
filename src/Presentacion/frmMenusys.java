@@ -59,7 +59,7 @@ public class frmMenusys extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(null);
 
-        jdpSistema.setBackground(new java.awt.Color(255, 255, 255));
+        jdpSistema.setBackground(new java.awt.Color(6, 66, 125));
         getContentPane().add(jdpSistema);
         jdpSistema.setBounds(0, -2, 150, 250);
 
