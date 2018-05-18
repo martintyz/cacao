@@ -50,6 +50,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     int con = 0;
     String prueba2;
     DomicilioTemporal auxDom;
+    ArrayList<DomicilioTemporal> listaDomicilios = new ArrayList<DomicilioTemporal>();
  
     /**
      * Creates new form frmDatosGeneralesCliente
@@ -2711,7 +2712,9 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         
         if(dialogoDomicilio.isPulsoOK()){  
             auxDom = dialogoDomicilio.obtenerCamposDomicilio();
-            llenaTablaDomicilios(auxDom);
+            listaDomicilios.add(auxDom);
+           
+            llenaTablaDomicilios(listaDomicilios);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -2744,23 +2747,26 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     }
     
 }
-    public void llenaTablaDomicilios(DomicilioTemporal objDomicilio){
-        try{            
+    public void llenaTablaDomicilios(ArrayList<DomicilioTemporal>auxLista){
+        try{       
+            JOptionPane.showMessageDialog(null, ""+auxLista.get(0).getCalle());
             String[] titulos={"Código","Descripción","Calle"};
             DefaultTableModel entidades=new DefaultTableModel(null, titulos){
                 public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
                 }};
-            int[] ancho={5,100,8};
-            Object[] fila=new Object[3];
-                    fila[0]=objDomicilio.getDescripcion();
-                    fila[1]=objDomicilio.getCalle();
-                    fila[2]=objDomicilio.getCalleRef1();
-                    entidades.addRow(fila);
-                
+            
+            String matriz[][] = new String [listaDomicilios.size()][3];
+            for (int i=0; i<auxLista.size();i++){
+            
+                matriz[i][0]=auxLista.get(i).getDescripcion().toString();
+                matriz[i][1]=auxLista.get(i).getCalle();
+                matriz[i][2]=auxLista.get(i).getCalleRef1();
+                entidades.addRow(matriz[i]);
+            }              
                 tblDomicilio.setModel(entidades);
                 tblDomicilio.setAutoCreateColumnsFromModel(true);
-                JTableColumnsWidth.setWidth(tblDomicilio,611,10,70,20 );  
+                JTableColumnsWidth.setWidth(tblDomicilio,611,6,30,64 );  
         }catch(Exception e){
             e.printStackTrace();
         }
