@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class frmDomicilio extends javax.swing.JDialog {
 
+     private boolean pulsoOK;
+     DomicilioTemporal domTemporal;
     /**
      * Creates new form frmDomicilio
      */
@@ -73,7 +75,7 @@ public class frmDomicilio extends javax.swing.JDialog {
         jSeparator12 = new javax.swing.JSeparator();
         txtDescDomicilio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -225,7 +227,7 @@ public class frmDomicilio extends javax.swing.JDialog {
                                             .addComponent(cmbCiudadDomicilio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(cmbEstadoDomicilio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(cmbColoniaDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel20)
@@ -234,7 +236,7 @@ public class frmDomicilio extends javax.swing.JDialog {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(63, 63, 63)
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel21)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -266,7 +268,7 @@ public class frmDomicilio extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jLabel21)
@@ -342,14 +344,16 @@ public class frmDomicilio extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jButton1.setText("jButton1");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Apply.png"))); // NOI18N
+        jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Erase.png"))); // NOI18N
+        Cancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -363,7 +367,7 @@ public class frmDomicilio extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(Cancelar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -374,7 +378,7 @@ public class frmDomicilio extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Cancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -389,7 +393,7 @@ public class frmDomicilio extends javax.swing.JDialog {
 
     private void txtNoExteriorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoExteriorKeyTyped
         // TODO add your handling code here:
-//        validarCampoNumerico = evt.getKeyChar();
+   //     validarCampoNumerico = evt.getKeyChar();
 //        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
     }//GEN-LAST:event_txtNoExteriorKeyTyped
 
@@ -423,20 +427,21 @@ public class frmDomicilio extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        obtenerCamposDomicilio();
+      pulsoOK = true;
+      dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void obtenerCamposDomicilio(){
-        DomicilioTemporal domTemporal =  new DomicilioTemporal(txtDescDomicilio.getText() ,txtCalle.getText(), txtCalle1.getText(),txtCalle2.getText(),txtNoInterior.getText(),txtNoExterior.getText(),
+    public DomicilioTemporal obtenerCamposDomicilio(){
+        domTemporal =  new DomicilioTemporal(txtDescDomicilio.getText() ,txtCalle.getText(), txtCalle1.getText(),txtCalle2.getText(),txtNoInterior.getText(),txtNoExterior.getText(),
                                                                txtCodigoPostal.getText(),cmbColoniaDomicilio.getSelectedItem().toString(),cmbCiudadDomicilio.getSelectedItem().toString(),
                                                                cmbEstadoDomicilio.getSelectedItem().toString(),cmbTipoVivienda.getSelectedItem().toString(), cmbTipoAsentamiento.getSelectedItem().toString());
-   // JOptionPane.showMessageDialog(null,""+domTemporal.getCalle()+""+domTemporal.getCalleRef1());          
-        frmDatosGeneralesCliente domicilioClient = new frmDatosGeneralesCliente();
-        domicilioClient.llenaTablaDomicilios(domTemporal);
-       
-        dispose();
+        return domTemporal;
     }
     
+     public boolean isPulsoOK() {
+        return pulsoOK;
+    }
+     
     public void llenaComboEstado(){
         try{
             Logica oLogica=new Logica();
@@ -493,13 +498,13 @@ public class frmDomicilio extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
     private javax.swing.JComboBox<String> cmbCiudadDomicilio;
     private javax.swing.JComboBox<String> cmbColoniaDomicilio;
     private javax.swing.JComboBox<String> cmbEstadoDomicilio;
     private javax.swing.JComboBox<String> cmbTipoAsentamiento;
     private javax.swing.JComboBox<String> cmbTipoVivienda;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;

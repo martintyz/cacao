@@ -48,10 +48,20 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     DateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
     String fechaChooser;
     int con = 0;
+    String prueba2;
+    DomicilioTemporal auxDom;
  
     /**
      * Creates new form frmDatosGeneralesCliente
      */
+    public frmDatosGeneralesCliente(String prueba){
+         initComponents();
+         this.prueba2 = prueba;
+     
+         JOptionPane.showMessageDialog(null, ""+prueba);
+ 
+    }
+    
     public frmDatosGeneralesCliente() {
         initComponents();
             
@@ -258,7 +268,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDomicilio = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
         pnlDatosConyugue = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         rbtnSeparacionBienes = new javax.swing.JRadioButton();
@@ -1590,8 +1599,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton5.setText("jButton5");
-
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -1600,10 +1607,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(327, 327, 327)
-                        .addComponent(jButton5))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -1611,9 +1615,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -2701,11 +2703,16 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         Frame f=JOptionPane.getFrameForComponent(this);
-        frmDomicilio domi=new frmDomicilio(f, true);
+        frmDomicilio dialogoDomicilio=new frmDomicilio(f, true);
         Dimension desktopSize = this.getParent().getSize();
-        Dimension FrameSize = domi.getSize();
-        domi.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
-        domi.setVisible(true);
+        Dimension FrameSize = dialogoDomicilio.getSize();
+        dialogoDomicilio.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        dialogoDomicilio.setVisible(true);
+        
+        if(dialogoDomicilio.isPulsoOK()){  
+            auxDom = dialogoDomicilio.obtenerCamposDomicilio();
+            llenaTablaDomicilios(auxDom);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -2738,48 +2745,28 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     
 }
     public void llenaTablaDomicilios(DomicilioTemporal objDomicilio){
-        try{
-            String Titulo[]={"Ejemplo","Descripción","Calle"};
-        
-            DefaultTableModel dfDomicilio = new DefaultTableModel(null, Titulo);
-            
-            ArrayList<DomicilioTemporal> lista = new ArrayList<DomicilioTemporal>();            
-            lista.add(objDomicilio);
-            
-            String[][] matriz = new String[lista.size()][3];
-            for (int i=0; i<lista.size();i++){
-            
-                matriz[i][0]=lista.get(i).getCalle();
-                matriz[i][1]=lista.get(i).getCalleRef1();
-                matriz[i][2]=lista.get(i).getCalleRef2();
-                dfDomicilio.addRow(matriz);
-            }
-            
-            Object[]row = {objDomicilio.getCalle(), objDomicilio.getCalleRef1()};
-             dfDomicilio.addRow(row);
-            
-            this.tblDomicilio.setModel(dfDomicilio);
-           // tblDomicilio.setAutoCreateColumnsFromModel(true);
-            
-            //JOptionPane.showMessageDialog(null,""+matriz[0][0]);
-            
-            //String x[][] = {};
-           
-          /*  String Titulo[]={"Código","Descripción","Calle"};
-            dfDomicilio = new DefaultTableModel(null, Titulo);
-            tblDomicilio.setModel(dfDomicilio);
-            dfDomicilio.insertRow(con,new Object[]{});
-            dfDomicilio.setValueAt(objDomicilio.getCalle(), con, 0);
-            dfDomicilio.setValueAt(objDomicilio.getCalleRef1(), con, 1);
-            dfDomicilio.setValueAt(objDomicilio.getCalleRef2(), con, 2);
-            con++;*/
-
+        try{            
+            String[] titulos={"Código","Descripción","Calle"};
+            DefaultTableModel entidades=new DefaultTableModel(null, titulos){
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+                }};
+            int[] ancho={5,100,8};
+            Object[] fila=new Object[3];
+                    fila[0]=objDomicilio.getDescripcion();
+                    fila[1]=objDomicilio.getCalle();
+                    fila[2]=objDomicilio.getCalleRef1();
+                    entidades.addRow(fila);
+                
+                tblDomicilio.setModel(entidades);
+                tblDomicilio.setAutoCreateColumnsFromModel(true);
+                JTableColumnsWidth.setWidth(tblDomicilio,611,10,70,20 );  
         }catch(Exception e){
             e.printStackTrace();
         }
         
     }
-    
+       
     public void llenaCombosEstado(){
         try{
             Logica oLogica=new Logica();
@@ -2855,7 +2842,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox16;
     private javax.swing.JComboBox<String> jComboBox17;
