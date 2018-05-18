@@ -14,7 +14,10 @@ import Entidades.Empresa;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -29,20 +32,27 @@ public class frmMenusys extends javax.swing.JFrame {
     /**
      * Creates new form fmrMenusys
      */
+    JLabel lbl_Fondo=new JLabel();
+    
     public frmMenusys() {
         initComponents();
          setLocationRelativeTo(null);
         Image icon=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/greed.png"));
         setIconImage(icon);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setTitle("GREED - Sistema de Cartera "+Empresa.getSnombreEmpresa());
+        this.setTitle("GREED - Sistema de Cartera - "+Empresa.getSnombreEmpresa());
         this.setLayout(new BorderLayout());
         this.add(jdpSistema, BorderLayout.CENTER);
         this.pack();
         this.setVisible(true);
         
+        this.addComponentListener(new ComponentAdapter(){
+            public void componentResized(ComponentEvent e){
+                resizeLogo();
+            }
+        });
         
-
+        jdpSistema.add(lbl_Fondo);
         pnlestado.setBorder(new BevelBorder(BevelBorder.RAISED));
         this.add(pnlestado, BorderLayout.SOUTH);
         
@@ -51,11 +61,18 @@ public class frmMenusys extends javax.swing.JFrame {
         JLabel statusLabel = new JLabel("Estado");
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         pnlestado.add(statusLabel);
-           
-        
-
-      
+                 
     }
+     public void resizeLogo(){
+            //lbl_Fondo.setSize(new Dimension(jdpSistema.getWidth()/4, jdpSistema.getWidth()/4));
+            lbl_Fondo.setSize(new Dimension(jdpSistema.getWidth(), jdpSistema.getHeight()));
+            //ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Images/greedmenu.png"));
+            ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Images/greedmenu2.png"));
+            ImageIcon imagenFondoRedimensionado = new ImageIcon(imagenFondo.getImage().getScaledInstance(lbl_Fondo.getWidth(),   lbl_Fondo.getHeight(), java.awt.Image.SCALE_SMOOTH));
+            lbl_Fondo.setIcon(imagenFondoRedimensionado);
+            lbl_Fondo.setLocation((jdpSistema.getWidth() - lbl_Fondo.getWidth())/2, (jdpSistema.getHeight()- lbl_Fondo.getHeight())/2);
+            
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,10 +97,15 @@ public class frmMenusys extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1024, 768));
         setName(""); // NOI18N
         setSize(new java.awt.Dimension(1024, 768));
+        addWindowStateListener(new java.awt.event.WindowStateListener() {
+            public void windowStateChanged(java.awt.event.WindowEvent evt) {
+                formWindowStateChanged(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jdpSistema.setBackground(new java.awt.Color(6, 66, 125));
-        getContentPane().add(jdpSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 250));
+        getContentPane().add(jdpSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 710));
 
         pnlestado.setBackground(new java.awt.Color(255, 255, 255));
         pnlestado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,6 +192,11 @@ public class frmMenusys extends javax.swing.JFrame {
         jdpSistema.add(cp);
         cp.show();
     }//GEN-LAST:event_mnicodigospActionPerformed
+
+    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowStateChanged
 
     /**
      * @param args the command line arguments

@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import Negocio.Logica;
 import Entidades.Usuario;
+import Entidades.*;
 import com.alee.laf.WebLookAndFeel;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -254,6 +255,8 @@ public class frmLogin extends javax.swing.JFrame {
                                 Usuario.setIiduser(iduser);
                                 Usuario.setcAlias(usuario); 
                                 Usuario.setcPwd(pass);
+                                Empresa.setSnombreEmpresa((String) cmb.getDisplayMember());
+                                Empresa.setIidempresa((int) cmb.getValueMember());
                     
                                 JOptionPane.showMessageDialog(null,"Bienvenido ","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE,null);//+Usuario.getcNombre());
                                 this.setVisible(false);

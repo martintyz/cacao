@@ -67,9 +67,8 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         btnEditarCP = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setClosable(true);
-        setIconifiable(true);
         setTitle("Entidades federativas, municipios y códigos postales");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/greedICO.png"))); // NOI18N
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -166,6 +165,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
 
         btnAgregarCP.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregarCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Create.png"))); // NOI18N
+        btnAgregarCP.setToolTipText("Nuevo");
         btnAgregarCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnAgregarCP.setBorderPainted(false);
         btnAgregarCP.setContentAreaFilled(false);
@@ -178,6 +178,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
 
         btnListaCP.setBackground(new java.awt.Color(255, 255, 255));
         btnListaCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
+        btnListaCP.setToolTipText("Mostrar Códigos Postales");
         btnListaCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnListaCP.setBorderPainted(false);
         btnListaCP.setContentAreaFilled(false);
@@ -190,6 +191,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
 
         btnListaMuni.setBackground(new java.awt.Color(255, 255, 255));
         btnListaMuni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
+        btnListaMuni.setToolTipText("Mostrar municipios");
         btnListaMuni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnListaMuni.setBorderPainted(false);
         btnListaMuni.setContentAreaFilled(false);
@@ -201,6 +203,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
 
         btnEditarCP.setBackground(new java.awt.Color(255, 255, 255));
         btnEditarCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Modify.png"))); // NOI18N
+        btnEditarCP.setToolTipText("Editar");
         btnEditarCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnEditarCP.setBorderPainted(false);
         btnEditarCP.setContentAreaFilled(false);
@@ -270,8 +273,8 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
                             .addComponent(btnEditarCP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnAgregarCP, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -293,6 +296,9 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         tblCP.setModel(new DefaultTableModel());
         lblMunicipio.setText("");
         lblCodigoP.setText("");
+        btnListaCP.setEnabled(false);
+        btnAgregarCP.setEnabled(false);
+        btnEditarCP.setEnabled(false);
     }//GEN-LAST:event_tblEntidadMouseClicked
 
     private void btnListaMuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaMuniActionPerformed
@@ -307,6 +313,8 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         tblCP.setModel(new DefaultTableModel());
         lblCodigoP.setText("");
         btnListaCP.setEnabled(true);
+        btnAgregarCP.setEnabled(false);
+        btnEditarCP.setEnabled(false);
     }//GEN-LAST:event_tblMunicipioMouseClicked
 
     private void btnListaCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaCPActionPerformed
@@ -410,6 +418,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
                 JTableColumnsWidth.setWidth(tblMunicipio, 611, 10,60);
                 tblMunicipio.setRowSelectionInterval(0, 0);
                 lblMunicipio.setText((String)tblMunicipio.getModel().getValueAt(0, 1));
+                btnListaCP.setEnabled(true);
             }
             
         }catch (Exception e){
