@@ -11,7 +11,14 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Entidades.Empresa;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -33,6 +40,21 @@ public class frmMenusys extends javax.swing.JFrame {
         this.add(jdpSistema, BorderLayout.CENTER);
         this.pack();
         this.setVisible(true);
+        
+        
+
+        pnlestado.setBorder(new BevelBorder(BevelBorder.RAISED));
+        this.add(pnlestado, BorderLayout.SOUTH);
+        
+        pnlestado.setPreferredSize(new Dimension(this.getWidth(), 16));
+        pnlestado.setLayout(new BoxLayout(pnlestado, BoxLayout.X_AXIS));
+        JLabel statusLabel = new JLabel("Estado");
+        statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        pnlestado.add(statusLabel);
+           
+        
+
+      
     }
 
     /**
@@ -45,6 +67,7 @@ public class frmMenusys extends javax.swing.JFrame {
     private void initComponents() {
 
         jdpSistema = new javax.swing.JDesktopPane();
+        pnlestado = new javax.swing.JPanel();
         mnbSistema = new javax.swing.JMenuBar();
         mnuCatalogos = new javax.swing.JMenu();
         mnicodigosp = new javax.swing.JMenuItem();
@@ -57,11 +80,14 @@ public class frmMenusys extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1024, 768));
         setName(""); // NOI18N
         setSize(new java.awt.Dimension(1024, 768));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jdpSistema.setBackground(new java.awt.Color(6, 66, 125));
-        getContentPane().add(jdpSistema);
-        jdpSistema.setBounds(0, -2, 150, 250);
+        getContentPane().add(jdpSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 250));
+
+        pnlestado.setBackground(new java.awt.Color(255, 255, 255));
+        pnlestado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(pnlestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 720, 1070, 20));
 
         mnbSistema.setBackground(new java.awt.Color(255, 255, 255));
         mnbSistema.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 36, 72)));
@@ -158,5 +184,6 @@ public class frmMenusys extends javax.swing.JFrame {
     private javax.swing.JMenu mnuAcreditados;
     private javax.swing.JMenu mnuCatalogos;
     private javax.swing.JMenu mnuOperacion;
+    private javax.swing.JPanel pnlestado;
     // End of variables declaration//GEN-END:variables
 }
