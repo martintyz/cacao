@@ -18,8 +18,10 @@ public class frmDomicilio extends javax.swing.JDialog {
     
     char validarCampoNumerico, validarCampoLetras;
 
-     private boolean pulsoOK;
+     private boolean pulsoOK, auxiliar;
      DomicilioTemporal domTemporal;
+     ArrayList<DomicilioTemporal>auxlista;
+     String auxprueba;
     /**
      * Creates new form frmDomicilio
      */
@@ -27,7 +29,7 @@ public class frmDomicilio extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        llenaComboEstado();
+        llenaComboEstado();              
     }
 
     /**
@@ -441,6 +443,18 @@ public class frmDomicilio extends javax.swing.JDialog {
         return domTemporal;
     }
     
+    public void editarCampos(ArrayList<DomicilioTemporal>lista, boolean recibe){
+        auxlista=lista;
+        auxiliar = recibe;
+
+    }
+    
+    public void llenaCampos(boolean recibe, ArrayList<DomicilioTemporal>lista, int posicion){
+    auxlista=lista;
+    txtDescDomicilio.setText(auxlista.get(posicion).getDescripcion());
+    txtCalle.setText(auxlista.get(posicion).getCalle());
+    }
+    
     public boolean isPulsoOK() {
         return pulsoOK;
     }
@@ -538,7 +552,7 @@ public class frmDomicilio extends javax.swing.JDialog {
     private javax.swing.JTextField txtCalle1;
     private javax.swing.JTextField txtCalle2;
     private javax.swing.JTextField txtCodigoPostal;
-    private javax.swing.JTextField txtDescDomicilio;
+    public javax.swing.JTextField txtDescDomicilio;
     private javax.swing.JTextField txtNoExterior;
     private javax.swing.JTextField txtNoInterior;
     // End of variables declaration//GEN-END:variables

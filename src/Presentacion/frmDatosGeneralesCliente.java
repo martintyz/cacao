@@ -50,7 +50,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     String fechaChooser;
     DomicilioTemporal auxDom;
     ArrayList<DomicilioTemporal> listaDomicilios = new ArrayList<DomicilioTemporal>();
- 
+    private boolean isSelected, isSelected2;
+    
     /**
      * Creates new form frmDatosGeneralesCliente
      */ 
@@ -2699,6 +2700,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        isSelected2 = false;
+        isSelected = true;
         Frame f=JOptionPane.getFrameForComponent(this);
         frmDomicilio dialogoDomicilio=new frmDomicilio(f, true);
         Dimension desktopSize = this.getParent().getSize();
@@ -2706,7 +2709,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         dialogoDomicilio.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         dialogoDomicilio.setVisible(true);
         
-        if(dialogoDomicilio.isPulsoOK()){  
+        if(dialogoDomicilio.isPulsoOK()&&isSelected==true){  
             auxDom = dialogoDomicilio.obtenerCamposDomicilio();
             listaDomicilios.add(auxDom);
            
@@ -2716,15 +2719,24 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
+        isSelected = false;
+        isSelected2 = true;
         Frame f=JOptionPane.getFrameForComponent(this);
         frmDomicilio dialogoDomicilio=new frmDomicilio(f, true);
+        dialogoDomicilio.llenaCampos(isSelected2, listaDomicilios, tblDomicilio.getSelectedRow());
         Dimension desktopSize = this.getParent().getSize();
         Dimension FrameSize = dialogoDomicilio.getSize();
         dialogoDomicilio.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         dialogoDomicilio.setVisible(true);
         
-
-        //JOptionPane.showMessageDialog(null,"dato"+listaDomicilios.get(a).getCalle());
+        if(dialogoDomicilio.isPulsoOK()&&isSelected2==true){  
+            auxDom = dialogoDomicilio.obtenerCamposDomicilio();
+            listaDomicilios.set(tblDomicilio.getSelectedRow(), auxDom);
+           
+            llenaTablaDomicilios(listaDomicilios);
+        JOptionPane.showMessageDialog(null,"Click");
+        
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2780,7 +2792,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         }
         
     }
-       
+         
     public void llenaCombosEstado(){
         try{
             Logica oLogica=new Logica();
@@ -2799,6 +2811,15 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         }
        
     }
+    
+    public boolean isAgregarSeleccionado(){
+        return isSelected;
+    }
+    
+        public boolean isEditarSeleccionado(){
+        return isSelected2;
+    }
+ 
        
     public void CalcularEdad(String FechaChooser, JLabel lblEdad){
         try{
