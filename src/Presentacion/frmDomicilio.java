@@ -7,6 +7,7 @@ package Presentacion;
 
 import Negocio.Logica;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +15,8 @@ import javax.swing.JOptionPane;
  * @author Sistemas
  */
 public class frmDomicilio extends javax.swing.JDialog {
+    
+    char validarCampoNumerico, validarCampoLetras;
 
      private boolean pulsoOK;
      DomicilioTemporal domTemporal;
@@ -23,7 +26,7 @@ public class frmDomicilio extends javax.swing.JDialog {
     public frmDomicilio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         llenaComboEstado();
     }
 
@@ -387,20 +390,20 @@ public class frmDomicilio extends javax.swing.JDialog {
 
     private void txtCodigoPostalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoPostalKeyTyped
         // TODO add your handling code here:
-//        validarCampoNumerico = evt.getKeyChar();
-//        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
+       validarCampoNumerico = evt.getKeyChar();
+       if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
     }//GEN-LAST:event_txtCodigoPostalKeyTyped
-
+ 
     private void txtNoExteriorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoExteriorKeyTyped
         // TODO add your handling code here:
-   //     validarCampoNumerico = evt.getKeyChar();
-//        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
+        validarCampoNumerico = evt.getKeyChar();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
     }//GEN-LAST:event_txtNoExteriorKeyTyped
 
     private void txtNoInteriorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoInteriorKeyTyped
         // TODO add your handling code here:
-//        validarCampoNumerico = evt.getKeyChar();
-//        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
+        validarCampoNumerico = evt.getKeyChar();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
     }//GEN-LAST:event_txtNoInteriorKeyTyped
 
     private void spnAñosResidenciaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnAñosResidenciaStateChanged
@@ -438,7 +441,7 @@ public class frmDomicilio extends javax.swing.JDialog {
         return domTemporal;
     }
     
-     public boolean isPulsoOK() {
+    public boolean isPulsoOK() {
         return pulsoOK;
     }
      

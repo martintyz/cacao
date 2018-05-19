@@ -36,6 +36,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -47,22 +48,12 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     RadioButtonActionListener actionListener, actionListener2;
     DateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
     String fechaChooser;
-    int con = 0;
-    String prueba2;
     DomicilioTemporal auxDom;
     ArrayList<DomicilioTemporal> listaDomicilios = new ArrayList<DomicilioTemporal>();
  
     /**
      * Creates new form frmDatosGeneralesCliente
-     */
-    public frmDatosGeneralesCliente(String prueba){
-         initComponents();
-         this.prueba2 = prueba;
-     
-         JOptionPane.showMessageDialog(null, ""+prueba);
- 
-    }
-    
+     */ 
     public frmDatosGeneralesCliente() {
         initComponents();
             
@@ -1572,6 +1563,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblDomicilio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDomicilioMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblDomicilio);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -2720,6 +2716,15 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
+        Frame f=JOptionPane.getFrameForComponent(this);
+        frmDomicilio dialogoDomicilio=new frmDomicilio(f, true);
+        Dimension desktopSize = this.getParent().getSize();
+        Dimension FrameSize = dialogoDomicilio.getSize();
+        dialogoDomicilio.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        dialogoDomicilio.setVisible(true);
+        
+
+        //JOptionPane.showMessageDialog(null,"dato"+listaDomicilios.get(a).getCalle());
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2733,6 +2738,10 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private void cmbCiudadEmpresaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbCiudadEmpresaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbCiudadEmpresaKeyPressed
+
+    private void tblDomicilioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDomicilioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblDomicilioMouseClicked
 
     public static void setEnableContainer(Container c, boolean band) {
 
@@ -2749,7 +2758,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 }
     public void llenaTablaDomicilios(ArrayList<DomicilioTemporal>auxLista){
         try{       
-            JOptionPane.showMessageDialog(null, ""+auxLista.get(0).getCalle());
             String[] titulos={"Código","Descripción","Calle"};
             DefaultTableModel entidades=new DefaultTableModel(null, titulos){
                 public boolean isCellEditable(int rowIndex, int mColIndex) {
