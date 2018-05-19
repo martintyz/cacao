@@ -333,7 +333,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
     private void btnAgregarCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCPActionPerformed
         // TODO add your handling code here:
         Frame f=JOptionPane.getFrameForComponent(this);
-        frmDetalleCodigoP cp=new frmDetalleCodigoP(f, true);
+        frmDetalleCodigoP cp=new frmDetalleCodigoP(f, true,(int)tblEntidad.getModel().getValueAt(tblEntidad.getSelectedRow(), 0),(int)tblMunicipio.getModel().getValueAt(tblMunicipio.getSelectedRow(), 0),0);
         Dimension desktopSize = this.getParent().getSize();
         Dimension FrameSize = cp.getSize();
         cp.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);

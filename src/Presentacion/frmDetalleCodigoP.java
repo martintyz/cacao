@@ -5,9 +5,12 @@
  */
 package Presentacion;
 
+import Negocio.Logica;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.ResultSet;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,17 +21,17 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     /**
      * Creates new form frmDetalleCodigoP
      */
-    public frmDetalleCodigoP(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        this.getContentPane().setBackground(Color.WHITE);
-        setTitle("Nuevo");
-    }
-    public frmDetalleCodigoP(java.awt.Frame parent, boolean modal,int idcodigoP) {
+    static int idestado=0,idmuni=0,idcodigop=0;
+    
+    public frmDetalleCodigoP(java.awt.Frame parent, boolean modal,int estado,int muni,int codigop) {
         super(parent, modal);
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         setTitle("Edición");
+        idestado=estado;
+        idmuni=muni;
+        idcodigop=codigop;
+        
     }
 
     /**
@@ -63,6 +66,11 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setIconImage(null);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -176,6 +184,11 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Delete.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Apply.png"))); // NOI18N
         btnAgregar.setText("Agregar");
@@ -213,6 +226,34 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        if(idcodigop==0){
+            try{
+            Logica oLogica=new Logica();
+            ResultSet edoymuni=oLogica.EdoyMuni(idmuni);
+            if(edoymuni!=null){
+                while(edoymuni.next()){
+                    txtcodigoEstado.setText(edoymuni.getString(1));
+                    txtEstado.setText(edoymuni.getString(2));
+                    txtcodigoMuni.setText(edoymuni.getString(3));
+                    txtMunicipio.setText(edoymuni.getString(4));
+                }
+            }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage()+ this.getName(),"Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,7 +284,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frmDetalleCodigoP dialog = new frmDetalleCodigoP(new javax.swing.JFrame(), true);
+                frmDetalleCodigoP dialog = new frmDetalleCodigoP(new javax.swing.JFrame(), true,idestado,idmuni,idcodigop);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

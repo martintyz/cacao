@@ -97,5 +97,18 @@ public class ManejoDatos {
         }
         return null;
     }
+    public ResultSet EdoyMuni(int idmuni){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaEdoyMuni(?)}");
+            pstm.setInt(1, idmuni);
+            ResultSet r=pstm.executeQuery();
+            if (r!=null) 
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
     // </editor-fold>
 }

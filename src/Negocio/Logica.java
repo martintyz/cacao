@@ -93,5 +93,16 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet EdoyMuni(int idmuni){
+        try{
+            ManejoDatos mdDatos=new ManejoDatos();
+            ResultSet edoymuni=mdDatos.EdoyMuni(idmuni);
+            if(edoymuni!=null)
+                return edoymuni;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando el estado y municipio "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
 }
