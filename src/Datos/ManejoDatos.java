@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import com.sun.accessibility.internal.resources.accessibility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -104,6 +105,18 @@ public class ManejoDatos {
             pstm.setInt(1, idmuni);
             ResultSet r=pstm.executeQuery();
             if (r!=null) 
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    public ResultSet TipoAsent(){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaTipoAsent()}");
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
                 return r;
         }catch(Exception e){
             System.out.println(e);
