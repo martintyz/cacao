@@ -8,7 +8,9 @@ package Presentacion;
 import Negocio.Logica;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 
 /**
  *
@@ -20,15 +22,16 @@ public class frmDomicilio extends javax.swing.JDialog {
 
      private boolean pulsoOK, auxiliar;
      DomicilioTemporal domTemporal;
-     ArrayList<DomicilioTemporal>auxlista;
-     String auxprueba;
     /**
      * Creates new form frmDomicilio
      */
     public frmDomicilio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        JFormattedTextField ftfieldAños = ((JSpinner.DefaultEditor)spnAñosResidencia.getEditor()).getTextField();
+        ftfieldAños.setEditable(false);
+        JFormattedTextField ftfieldMeses = ((JSpinner.DefaultEditor)spnMesesResidencia.getEditor()).getTextField();
+        ftfieldMeses.setEditable(false);
         llenaComboEstado();              
     }
 
@@ -359,6 +362,11 @@ public class frmDomicilio extends javax.swing.JDialog {
 
         Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Erase.png"))); // NOI18N
         Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -432,27 +440,36 @@ public class frmDomicilio extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+      if(validacampos()){
       pulsoOK = true;
       dispose();
+      }   
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_CancelarActionPerformed
 
     public DomicilioTemporal obtenerCamposDomicilio(){
         domTemporal =  new DomicilioTemporal(txtDescDomicilio.getText() ,txtCalle.getText(), txtCalle1.getText(),txtCalle2.getText(),txtNoInterior.getText(),txtNoExterior.getText(),
                                                                txtCodigoPostal.getText(),cmbColoniaDomicilio.getSelectedItem().toString(),cmbCiudadDomicilio.getSelectedItem().toString(),
-                                                               cmbEstadoDomicilio.getSelectedItem().toString(),cmbTipoVivienda.getSelectedItem().toString(), cmbTipoAsentamiento.getSelectedItem().toString());
+                                                               cmbEstadoDomicilio.getSelectedItem().toString(),cmbTipoVivienda.getSelectedItem().toString(), cmbTipoAsentamiento.getSelectedItem().toString(),
+                                                               (Integer)spnAñosResidencia.getValue(),(Integer)spnMesesResidencia.getValue());
         return domTemporal;
     }
     
-    public void editarCampos(ArrayList<DomicilioTemporal>lista, boolean recibe){
-        auxlista=lista;
-        auxiliar = recibe;
-
-    }
     
-    public void llenaCampos(boolean recibe, ArrayList<DomicilioTemporal>lista, int posicion){
-    auxlista=lista;
-    txtDescDomicilio.setText(auxlista.get(posicion).getDescripcion());
-    txtCalle.setText(auxlista.get(posicion).getCalle());
+    public void llenaCampos(ArrayList<DomicilioTemporal>lista, int posicion){
+    txtDescDomicilio.setText(lista.get(posicion).getDescripcion());
+    txtCalle.setText(lista.get(posicion).getCalle());
+    txtCalle1.setText(lista.get(posicion).getCalleRef1());
+    txtCalle2.setText(lista.get(posicion).getCalleRef2());
+    txtNoExterior.setText(lista.get(posicion).getNoExterior());
+    txtNoInterior.setText(lista.get(posicion).getNoInterior());
+    txtCodigoPostal.setText(lista.get(posicion).getCodigoPostal());
+    spnAñosResidencia.setValue(Integer.valueOf(lista.get(posicion).getAñosResidencia()));
+    spnMesesResidencia.setValue(Integer.valueOf(lista.get(posicion).getMesesResidencia()));
     }
     
     public boolean isPulsoOK() {
@@ -470,7 +487,24 @@ public class frmDomicilio extends javax.swing.JDialog {
         catch(Exception e){
               e.printStackTrace();
         }
-       
+              
+    }
+    
+    public boolean validacampos(){
+        boolean valido = false;
+        
+        if(txtCalle.getText().isEmpty() || txtCalle1.getText().isEmpty() || txtCalle2.getText().isEmpty() 
+                || txtNoExterior.getText().isEmpty() || txtNoInterior.getText().isEmpty() || txtCodigoPostal.getText().isEmpty()){
+             JOptionPane.showMessageDialog(null,"Llene todos los campos");
+        }else{
+            if(Integer.parseInt(spnAñosResidencia.getValue().toString())==0 && Integer.parseInt(spnMesesResidencia.getValue().toString())<6){
+            JOptionPane.showMessageDialog(null,"Su tiempo de residencia debe ser mayor o igual a 6 meses");
+        }else{
+            valido=true;
+        }
+        }
+        
+        return valido;
     }
     /**
      * @param args the command line arguments
