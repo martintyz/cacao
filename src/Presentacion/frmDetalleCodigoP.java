@@ -31,6 +31,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         setTitle(titulo);
+        
         idestado=estado;
         idmuni=muni;
         idcodigop=codigop;
@@ -60,8 +61,8 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         cmbCiudad = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtcp = new javax.swing.JTextField();
+        txtasent = new javax.swing.JTextField();
         cmbTipoAsen = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
@@ -160,9 +161,9 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cmbCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbTipoAsen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,11 +174,11 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -254,6 +255,32 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
              //cmbemp.addItem(dvm);
                 DefaultComboBoxModel mod=new DefaultComboBoxModel(matriz);
                 cmbTipoAsen.setModel(mod);
+                }
+            } catch (SQLException e) {
+        
+                System.out.println("Error "+e.getMessage());
+            }
+            
+            ResultSet cem=oLogica.CiudadEM(idestado,idmuni);
+            cont=0;
+            try {
+                while(cem.next()){
+                cont++;
+            }
+            cem.beforeFirst();
+            }catch(Exception e){
+                System.out.println("Error "+e.getMessage());
+            }
+            Object[] vec=new Object[cont];
+             i=0;
+            try {
+                while(cem.next()){
+                DisplayValueModel dvm=new DisplayValueModel(cem.getObject(2),cem.getObject(1));
+                vec[i]=dvm;
+                i++;
+             //cmbemp.addItem(dvm);
+                DefaultComboBoxModel mod=new DefaultComboBoxModel(vec);
+                cmbCiudad.setModel(mod);
                 }
             } catch (SQLException e) {
         
@@ -339,11 +366,11 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtMunicipio;
+    private javax.swing.JTextField txtasent;
     private javax.swing.JTextField txtcodigoEstado;
     private javax.swing.JTextField txtcodigoMuni;
+    private javax.swing.JTextField txtcp;
     // End of variables declaration//GEN-END:variables
 }

@@ -123,5 +123,19 @@ public class ManejoDatos {
         }
         return null;
     }
+    public ResultSet CiudadEM(int edo,int muni){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaCiudadEM(?,?)}");
+            pstm.setInt(1, edo);
+            pstm.setInt(2, muni);
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
     // </editor-fold>
 }
