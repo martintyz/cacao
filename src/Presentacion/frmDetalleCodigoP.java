@@ -36,7 +36,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         idmuni=muni;
         idcodigop=codigop;
         titulo=encab;
-        
+        llenarcombos();
     }
 
     /**
@@ -234,6 +234,9 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
+    }//GEN-LAST:event_formWindowOpened
+    public void llenarcombos(){
+    
             Logica oLogica=new Logica();
             ResultSet tipoa=oLogica.TipoAsent();
             int cont=0;
@@ -304,11 +307,10 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         }else{
             
         }
-    }//GEN-LAST:event_formWindowOpened
-
+    }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
