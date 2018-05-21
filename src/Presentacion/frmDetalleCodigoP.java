@@ -9,6 +9,8 @@ import Negocio.Logica;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -22,15 +24,17 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
      * Creates new form frmDetalleCodigoP
      */
     static int idestado=0,idmuni=0,idcodigop=0;
+    static String titulo="";
     
-    public frmDetalleCodigoP(java.awt.Frame parent, boolean modal,int estado,int muni,int codigop) {
+    public frmDetalleCodigoP(String encab,java.awt.Frame parent, boolean modal,int estado,int muni,int codigop) {
         super(parent, modal);
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
-        setTitle("Edición");
+        setTitle(titulo);
         idestado=estado;
         idmuni=muni;
         idcodigop=codigop;
+        titulo=encab;
         
     }
 
@@ -229,9 +233,35 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
+            Logica oLogica=new Logica();
+            ResultSet tipoa=oLogica.TipoAsent();
+            int cont=0;
+            try {
+                while(tipoa.next()){
+                cont++;
+            }
+            tipoa.beforeFirst();
+            }catch(Exception e){
+                System.out.println("Error "+e.getMessage());
+            }
+            Object[] matriz=new Object[cont];
+            int i=0;
+            try {
+                while(tipoa.next()){
+                DisplayValueModel dvm=new DisplayValueModel(tipoa.getObject(2),tipoa.getObject(1));
+                matriz[i]=dvm;
+                i++;
+             //cmbemp.addItem(dvm);
+                DefaultComboBoxModel mod=new DefaultComboBoxModel(matriz);
+                cmbTipoAsen.setModel(mod);
+                }
+            } catch (SQLException e) {
+        
+                System.out.println("Error "+e.getMessage());
+            }
         if(idcodigop==0){
             try{
-            Logica oLogica=new Logica();
+            oLogica=new Logica();
             ResultSet edoymuni=oLogica.EdoyMuni(idmuni);
             if(edoymuni!=null){
                 while(edoymuni.next()){
@@ -284,7 +314,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frmDetalleCodigoP dialog = new frmDetalleCodigoP(new javax.swing.JFrame(), true,idestado,idmuni,idcodigop);
+                frmDetalleCodigoP dialog = new frmDetalleCodigoP(titulo,new javax.swing.JFrame(), true,idestado,idmuni,idcodigop);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

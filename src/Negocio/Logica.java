@@ -104,5 +104,16 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet TipoAsent(){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            ResultSet tipoa=mdd.TipoAsent();
+            if(tipoa!=null)
+                return tipoa;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando el tipo de asentamiento "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
 }
