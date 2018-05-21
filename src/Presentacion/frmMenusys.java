@@ -61,13 +61,12 @@ public class frmMenusys extends javax.swing.JFrame {
         JLabel statusLabel = new JLabel("Estado");
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         pnlestado.add(statusLabel);
-                 
     }
      public void resizeLogo(){
-            //lbl_Fondo.setSize(new Dimension(jdpSistema.getWidth()/4, jdpSistema.getWidth()/4));
-            lbl_Fondo.setSize(new Dimension(jdpSistema.getWidth(), jdpSistema.getHeight()));
-            //ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Images/greedmenu.png"));
-            ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Images/greedmenu2.png"));
+            lbl_Fondo.setSize(new Dimension(jdpSistema.getWidth()/4, jdpSistema.getWidth()/4));
+            //lbl_Fondo.setSize(new Dimension(jdpSistema.getWidth(), jdpSistema.getHeight()));
+            ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Images/greedmenu.png"));
+            //ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Images/greedmenu2.png"));
             ImageIcon imagenFondoRedimensionado = new ImageIcon(imagenFondo.getImage().getScaledInstance(lbl_Fondo.getWidth(),   lbl_Fondo.getHeight(), java.awt.Image.SCALE_SMOOTH));
             lbl_Fondo.setIcon(imagenFondoRedimensionado);
             lbl_Fondo.setLocation((jdpSistema.getWidth() - lbl_Fondo.getWidth())/2, (jdpSistema.getHeight()- lbl_Fondo.getHeight())/2);

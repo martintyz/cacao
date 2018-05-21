@@ -115,5 +115,16 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet CiudadEM(int edo,int muni){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            ResultSet cem=mdd.CiudadEM(edo, muni);
+            if(cem!=null)
+                return cem;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando la lista de Ciudades del municipio "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
 }
