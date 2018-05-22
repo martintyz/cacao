@@ -259,14 +259,17 @@ public class frmLogin extends javax.swing.JFrame {
                                 Empresa.setIidempresa((int) cmb.getValueMember());
                     
                                 JOptionPane.showMessageDialog(null,"Bienvenido ","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE,null);//+Usuario.getcNombre());
+                                Toolkit.getDefaultToolkit().beep();
                                 this.setVisible(false);
                                 frmMenusys menu=new frmMenusys();
                                 menu.setVisible(true);
                             }else{
                         JOptionPane.showMessageDialog(null, "Se le ha suspendido el permiso de acceso a la empresa seleccionada.","Permiso suspendido",JOptionPane.ERROR_MESSAGE,null);
+                        Toolkit.getDefaultToolkit().beep();
                     }
                         }else{
                         JOptionPane.showMessageDialog(null, "El usuario no tiene permisos para ingresar a la empresa seleccionada.","Empresa Incorrecta",JOptionPane.ERROR_MESSAGE,null);
+                        Toolkit.getDefaultToolkit().beep();
                     }
                     }
         }

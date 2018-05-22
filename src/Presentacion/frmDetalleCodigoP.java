@@ -8,11 +8,14 @@ package Presentacion;
 import Negocio.Logica;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -37,6 +40,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         idcodigop=codigop;
         titulo=encab;
         llenarcombos();
+        
     }
 
     /**
@@ -64,6 +68,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         txtcp = new javax.swing.JTextField();
         txtasent = new javax.swing.JTextField();
         cmbTipoAsen = new javax.swing.JComboBox<>();
+        ftxtCP = new javax.swing.JFormattedTextField();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
@@ -144,6 +149,12 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
 
         jLabel6.setText("Tipo Asentamiento:");
 
+        txtcp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcpKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -162,7 +173,10 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                     .addComponent(cmbCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbTipoAsen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ftxtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -175,7 +189,8 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(ftxtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,6 +328,19 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void txtcpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcpKeyTyped
+        // TODO add your handling code here:
+        if(txtcp.getText().length()==5){
+            evt.consume();
+            txtasent.requestFocus();
+        }else{
+            if(!Character.isDigit(evt.getKeyChar())&&!Character.isISOControl(evt.getKeyChar())){
+                evt.consume();
+                Toolkit.getDefaultToolkit().beep();
+            }
+        }
+    }//GEN-LAST:event_txtcpKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -360,6 +388,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmbCiudad;
     private javax.swing.JComboBox<String> cmbTipoAsen;
+    private javax.swing.JFormattedTextField ftxtCP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
