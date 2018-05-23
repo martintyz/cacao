@@ -15,6 +15,7 @@ import java.text.NumberFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import Presentacion.Auxiliar;
 import javax.swing.text.NumberFormatter;
 
 /**
@@ -68,7 +69,6 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         txtcp = new javax.swing.JTextField();
         txtasent = new javax.swing.JTextField();
         cmbTipoAsen = new javax.swing.JComboBox<>();
-        ftxtCP = new javax.swing.JFormattedTextField();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
@@ -173,10 +173,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                     .addComponent(cmbCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbTipoAsen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ftxtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -189,8 +186,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(ftxtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,6 +208,11 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Apply.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -296,10 +297,11 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 DisplayValueModel dvm=new DisplayValueModel(cem.getObject(2),cem.getObject(1));
                 vec[i]=dvm;
                 i++;
+                }
              //cmbemp.addItem(dvm);
                 DefaultComboBoxModel mod=new DefaultComboBoxModel(vec);
-                cmbCiudad.setModel(mod);
-                }
+                cmbCiudad.setModel(mod);         
+                cmbCiudad.setSelectedIndex(1);
             } catch (SQLException e) {
         
                 System.out.println("Error "+e.getMessage());
@@ -340,6 +342,35 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_txtcpKeyTyped
+    public Boolean validarCampos(){
+        if(txtcp.getText().length()==5){
+            if(new Auxiliar().RangoCP(idestado,Integer.parseInt(txtcp.getText()))){
+                if(txtasent.getText().length()>1)
+                    return true;
+                else{
+                    JOptionPane.showMessageDialog(this,"Debe capturar el nombre del Asentamiento","Error Código Postal",JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }else{
+                JOptionPane.showMessageDialog(this,"El Código Postal no existe dentro del rengo numérico permitido en la Entidad","Error Código Postal",JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "El Código Postal debe contener 5 caracteres numéricos", "Error Código Postal",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        Boolean val=validarCampos();
+        if(idcodigop==0){
+            if(val){
+                if(JOptionPane.showConfirmDialog(this, "¿Desea guardar la siguiente información? \nCP: "+txtcp.getText()+"\nAsentamiento: "+txtasent.getText()+"\nTipo: "+cmbTipoAsen.getSelectedItem().toString()+"\nMunicipio: "+txtMunicipio.getText()+"\nEstado: "+txtEstado.getText(), "Nuevo registro",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                    JOptionPane.showMessageDialog(this, "Guardado");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,7 +419,6 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmbCiudad;
     private javax.swing.JComboBox<String> cmbTipoAsen;
-    private javax.swing.JFormattedTextField ftxtCP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
