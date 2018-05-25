@@ -5,6 +5,14 @@
  */
 package Presentacion;
 
+import static Presentacion.frmMenusys.jdpSistema;
+import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+
 /**
  *
  * @author Sistemas
@@ -152,6 +160,15 @@ public class frmListaContacto extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
+        datos.addInternalFrameListener(new InternalFrameAdapter() {
+           @Override
+                public void internalFrameClosed(InternalFrameEvent e){
+                    JOptionPane.showMessageDialog(datos, "Datos Cliente cerrado");
+                }
+        });
+            Dimension desktopSize = jdpSistema.getSize();
+            Dimension FrameSize = datos.getSize();
+            datos.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         frmMenusys.jdpSistema.add(datos);
         frmMenusys.jdpSistema.moveToFront(datos);
         datos.show();
