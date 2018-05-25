@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -334,6 +336,12 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Frame f=JOptionPane.getFrameForComponent(this);
         frmDetalleCodigoP cp=new frmDetalleCodigoP("Nuevo",f, true,(int)tblEntidad.getModel().getValueAt(tblEntidad.getSelectedRow(), 0),(int)tblMunicipio.getModel().getValueAt(tblMunicipio.getSelectedRow(), 0),0);
+        cp.addWindowListener(new WindowAdapter() {
+           @Override
+                public void windowClosed(WindowEvent e){
+                    llenarCP();
+                }
+        });
         Dimension desktopSize = this.getParent().getSize();
         Dimension FrameSize = cp.getSize();
         cp.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);

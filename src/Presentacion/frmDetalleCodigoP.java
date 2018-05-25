@@ -69,11 +69,16 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         txtcp = new javax.swing.JTextField();
         txtasent = new javax.swing.JTextField();
         cmbTipoAsen = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        cmbzonaP = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+        setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(null);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -82,6 +87,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Entidad Federativa:");
@@ -139,6 +145,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setText("Ciudad:");
@@ -149,32 +156,42 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
 
         jLabel6.setText("Tipo Asentamiento:");
 
+        txtcp.setBorder(null);
         txtcp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcpKeyTyped(evt);
             }
         });
 
+        txtasent.setBorder(null);
+
+        jLabel7.setText("Zona Población:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel5)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))))
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbTipoAsen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbzonaP, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cmbTipoAsen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtasent, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                        .addComponent(jSeparator2)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                            .addComponent(txtcp, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,21 +200,30 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(2, 2, 2)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtasent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbTipoAsen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(cmbzonaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Delete.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,6 +232,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
             }
         });
 
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Apply.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -235,9 +262,9 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnAgregar))
@@ -306,6 +333,36 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         
                 System.out.println("Error "+e.getMessage());
             }
+            
+            
+            ResultSet zonap=oLogica.ZonaP();
+            cont=0;
+            try {
+                while(zonap.next()){
+                cont++;
+            }
+            zonap.beforeFirst();
+            }catch(Exception e){
+                System.out.println("Error "+e.getMessage());
+            }
+            Object[] zona=new Object[cont];
+             i=0;
+            try {
+                while(zonap.next()){
+                DisplayValueModel dvm=new DisplayValueModel(zonap.getObject(2),zonap.getObject(1));
+                zona[i]=dvm;
+                i++;
+                }
+             //cmbemp.addItem(dvm);
+                DefaultComboBoxModel mod=new DefaultComboBoxModel(zona);
+                cmbzonaP.setModel(mod);         
+                cmbzonaP.setSelectedIndex(1);
+            } catch (SQLException e) {
+        
+                System.out.println("Error "+e.getMessage());
+            }
+            
+            
         if(idcodigop==0){
             try{
             oLogica=new Logica();
@@ -324,6 +381,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
         }else{
             
         }
+        
     }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
@@ -363,10 +421,20 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         Boolean val=validarCampos();
+        DisplayValueModel ciudad=(DisplayValueModel) cmbCiudad.getSelectedItem();
+        DisplayValueModel tipoA=(DisplayValueModel) cmbTipoAsen.getSelectedItem();
+        DisplayValueModel zonap=(DisplayValueModel)cmbzonaP.getSelectedItem();
         if(idcodigop==0){
             if(val){
-                if(JOptionPane.showConfirmDialog(this, "¿Desea guardar la siguiente información? \nCP: "+txtcp.getText()+"\nAsentamiento: "+txtasent.getText()+"\nTipo: "+cmbTipoAsen.getSelectedItem().toString()+"\nMunicipio: "+txtMunicipio.getText()+"\nEstado: "+txtEstado.getText(), "Nuevo registro",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
-                    JOptionPane.showMessageDialog(this, "Guardado");
+                if(JOptionPane.showConfirmDialog(this, "¿Desea guardar la siguiente información? \nCP: "+txtcp.getText()+"\nAsentamiento: "+txtasent.getText()+"\nTipo: "+cmbTipoAsen.getSelectedItem().toString()+"\nZona: "+cmbzonaP.getSelectedItem().toString()+"\nMunicipio: "+txtMunicipio.getText()+"\nEstado: "+txtEstado.getText(), "Nuevo registro",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                    try{
+                        Logica oLogica=new Logica();
+                        oLogica.InsertarCP(txtasent.getText(), txtcp.getText(), (int)ciudad.getValueMember(), idmuni, idestado, (int)zonap.getValueMember(), (int)tipoA.getValueMember());
+                        JOptionPane.showMessageDialog(this, "Código Postal agregado correctamente","Nuevo Código Postal",JOptionPane.INFORMATION_MESSAGE);
+                        this.dispose();
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(this, "Hubo un error al insertar el Código Postal\n"+e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         }
@@ -419,14 +487,18 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmbCiudad;
     private javax.swing.JComboBox<String> cmbTipoAsen;
+    private javax.swing.JComboBox<String> cmbzonaP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtMunicipio;
     private javax.swing.JTextField txtasent;

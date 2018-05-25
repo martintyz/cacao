@@ -126,5 +126,26 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet ZonaP(){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            ResultSet zona=mdd.ZonaP();
+            if(zona!=null)
+                return zona;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando la lista de Zona de Poblacion "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc="Insertar">
+    public void InsertarCP(String detalle,String cp,int idciudad,int idmuni,int idedo,int idzonap,int idtipoa){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            mdd.InsertarCP(detalle, cp, idciudad, idmuni, idedo, idzonap, idtipoa);
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error al agregar el Código Postal "+e.getMessage());
+        }
+    }
+    //</editor-fold>
 }

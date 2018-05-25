@@ -258,7 +258,7 @@ public class frmLogin extends javax.swing.JFrame {
                                 Empresa.setSnombreEmpresa((String) cmb.getDisplayMember());
                                 Empresa.setIidempresa((int) cmb.getValueMember());
                     
-                                JOptionPane.showMessageDialog(null,"Bienvenido ","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE,null);//+Usuario.getcNombre());
+                                JOptionPane.showMessageDialog(null,"Bienvenido ","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE);//+Usuario.getcNombre());
                                 Toolkit.getDefaultToolkit().beep();
                                 this.setVisible(false);
                                 frmMenusys menu=new frmMenusys();

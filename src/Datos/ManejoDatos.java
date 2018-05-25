@@ -137,5 +137,40 @@ public class ManejoDatos {
         }
         return null;
     }
+    public ResultSet ZonaP(){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaZonaP()}");
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
     // </editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Insertar">
+    public void InsertarCP(String detalle,String cp,int idciudad,int idmuni,int idedo,int idzonap,int idtipoa){
+        
+        try{
+            
+            Connection cnn= AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm = cnn.prepareStatement("{call spInsertarCP(?,?,?,?,?,?,?)}");
+            pstm.setString(1, detalle);
+            pstm.setString(2, cp);
+            pstm.setInt(3, idciudad);
+            pstm.setInt(4, idmuni);
+            pstm.setInt(5, idedo);
+            pstm.setInt(6, idzonap);
+            pstm.setInt(7, idtipoa);
+            pstm.executeQuery();
+            cnn.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+    }
+    //</editor-fold>
+
 }
