@@ -28,10 +28,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -47,16 +49,24 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     char validarCampoNumerico, validarCampoLetras;
     RadioButtonActionListener actionListener, actionListener2;
     DateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat anio = new SimpleDateFormat("yyyy");
+    SimpleDateFormat mes = new SimpleDateFormat("MM");
+    SimpleDateFormat dia = new SimpleDateFormat("dd");
+    
     String fechaChooser;
     DomicilioTemporal auxDom;
     ArrayList<DomicilioTemporal> listaDomicilios = new ArrayList<DomicilioTemporal>();
+    boolean domicilioCompleto = false;
 
     /**
      * Creates new form frmDatosGeneralesCliente
      */ 
     public frmDatosGeneralesCliente() {
         initComponents();
-            
+        
+        JFormattedTextField ftfieldMeses = ((JSpinner.DefaultEditor)spnNoHijos.getEditor()).getTextField();
+        ftfieldMeses.setEditable(false);
+        
         actionListener = new RadioButtonActionListener(tbpDatosGeneralesCliente);
         actionListener2 = new RadioButtonActionListener(pnlNoHijos);
        
@@ -91,6 +101,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 } 
             }
         });
+        
         
         dtcFechaNacimientoC.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
@@ -350,6 +361,12 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setClosable(true);
+
+        tbpDatosGeneralesCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbpDatosGeneralesClienteMouseClicked(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(64834, 64834));
@@ -754,6 +771,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jLabel13.setText("RFC");
 
         jButton3.setText("Generar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         txtCurp.setBorder(null);
         txtCurp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -962,7 +984,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
         jLabel35.setText("Número");
 
-        txtLadaCelular.setForeground(new java.awt.Color(255, 255, 255));
         txtLadaCelular.setBorder(null);
         txtLadaCelular.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtLadaCelular.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1023,11 +1044,21 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jLabel44.setText("Número");
 
         txtLadaReferencia.setBorder(null);
+        txtLadaReferencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLadaReferenciaKeyTyped(evt);
+            }
+        });
 
         txtNoReferencia.setBorder(null);
         txtNoReferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNoReferenciaActionPerformed(evt);
+            }
+        });
+        txtNoReferencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNoReferenciaKeyTyped(evt);
             }
         });
 
@@ -1077,8 +1108,18 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jLabel42.setText("Número");
 
         txtLadaFijo.setBorder(null);
+        txtLadaFijo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLadaFijoKeyTyped(evt);
+            }
+        });
 
         txtNoFijo.setBorder(null);
+        txtNoFijo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNoFijoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlTelefonoFijoLayout = new javax.swing.GroupLayout(pnlTelefonoFijo);
         pnlTelefonoFijo.setLayout(pnlTelefonoFijoLayout);
@@ -1550,7 +1591,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                             .addGroup(pnlDatosConyugueLayout.createSequentialGroup()
                                 .addComponent(txtNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt2doNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txt2doNombreC))))
                     .addGroup(pnlDatosConyugueLayout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addGap(18, 18, 18)
@@ -2205,13 +2246,13 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private void txtLadaCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLadaCelularKeyTyped
         // TODO add your handling code here:
         validarCampoNumerico = evt.getKeyChar();
-        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9' || txtLadaCelular.getText().length()== 3) evt.consume();
     }//GEN-LAST:event_txtLadaCelularKeyTyped
 
     private void txtNoCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoCelularKeyTyped
         // TODO add your handling code here:
         validarCampoNumerico = evt.getKeyChar();
-        if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9' || txtNoCelular.getText().length() ==  10) evt.consume();
     }//GEN-LAST:event_txtNoCelularKeyTyped
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -2316,6 +2357,11 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       if(validaDatosContacto()) {
+
+       }else{
+           
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void spnAñoAntiguedadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnAñoAntiguedadStateChanged
@@ -2399,6 +2445,39 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblDomicilioMouseClicked
 
+    private void tbpDatosGeneralesClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpDatosGeneralesClienteMouseClicked
+        // TODO add your handling code here:      
+    }//GEN-LAST:event_tbpDatosGeneralesClienteMouseClicked
+
+    private void txtLadaFijoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLadaFijoKeyTyped
+        // TODO add your handling code here:
+        validarCampoNumerico = evt.getKeyChar();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9' || txtLadaFijo.getText().length() ==  3) evt.consume();
+    }//GEN-LAST:event_txtLadaFijoKeyTyped
+
+    private void txtNoFijoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoFijoKeyTyped
+        // TODO add your handling code here:
+        validarCampoNumerico = evt.getKeyChar();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9' || txtNoFijo.getText().length() ==  10) evt.consume();
+    }//GEN-LAST:event_txtNoFijoKeyTyped
+
+    private void txtLadaReferenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLadaReferenciaKeyTyped
+        // TODO add your handling code here:
+        validarCampoNumerico = evt.getKeyChar();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9' || txtLadaReferencia.getText().length() ==  3) evt.consume();
+    }//GEN-LAST:event_txtLadaReferenciaKeyTyped
+
+    private void txtNoReferenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoReferenciaKeyTyped
+        // TODO add your handling code here:
+        validarCampoNumerico = evt.getKeyChar();
+        if (validarCampoNumerico < '0' || validarCampoNumerico > '9' || txtNoReferencia.getText().length() ==  10) evt.consume();
+    }//GEN-LAST:event_txtNoReferenciaKeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        CalcularCurp();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     public static void setEnableContainer(Container c, boolean band) {
 
     Component [] components = c.getComponents();
@@ -2454,6 +2533,92 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         }
        
     }
+    
+    public boolean validaDatosContacto(){
+        if(listaDomicilios.size()>=1 && (chcbTelefonoCelular.isSelected() && !txtNoCelular.getText().isEmpty()) || (chcbTelefonoFijo.isSelected() && !txtNoFijo.getText().isEmpty())){
+            domicilioCompleto = true;
+            
+        }else{
+           // JOptionPane.showMessageDialog(null,"Verifique los datos, al menos un domicilio y un número de teléfono debe ingresarse");
+            
+                if(listaDomicilios.size()>=1){
+                   
+                    if(chcbTelefonoCelular.isSelected() && txtNoCelular.getText().isEmpty()){
+                   
+                        JOptionPane.showMessageDialog(null,"Ingrese un número de teléfono celular");
+                        
+                    }else{
+                    
+                    if(chcbTelefonoFijo.isSelected() && txtNoFijo.getText().isEmpty()){
+
+                        JOptionPane.showMessageDialog(null,"Ingrese un número de teléfono fijo");
+                    }else{
+                    
+                    if(chcbTelefonoReferencia.isSelected() && txtNoReferencia.getText().isEmpty()) {
+                    
+                        JOptionPane.showMessageDialog(null,"Ingrese un número de teléfono de referencia");    
+                    }
+                    }
+                }
+         }else{
+                    
+            JOptionPane.showMessageDialog(null,"Verifique los datos de contacto");
+        }
+            
+        }
+
+        return domicilioCompleto;
+    }
+    
+    public void obtenerDatosConyugue(){
+        rbtnSeparacionBienes.setActionCommand("Separación de bienes");
+        rbtnSociedadConyugal.setActionCommand("Sociedad conyugal");
+        JOptionPane.showMessageDialog(null,"Dato radio"+btnGroupRegimen.getSelection().getActionCommand()); 
+    }
+    
+    public void obtenerDatosCliente(){
+        rbtnMasculino.setActionCommand("Masculino");
+        rbtnFemenino.setActionCommand("Femenino");
+        rbtnSoltero.setActionCommand("Soltero");
+        rbtnCasado.setActionCommand("Casado");
+        rbtnDivorciado.setActionCommand("Divorciado");
+        rbtnUnionLibre.setActionCommand("Unión Libre");
+        rbtnViudo.setActionCommand("Viudo");
+        rbtnHijosSi.setActionCommand("Si");
+        rbtnHijosNo.setActionCommand("No");
+        rbtnEmpleado.setActionCommand("Empleado");
+        rbtnNegocio.setActionCommand("Negocio");
+        rbtnAmbos.setActionCommand("Ambos");
+        
+        txtNombre.getText();
+        txtSegundoNombre.getText();
+        txtApellidoMaterno.getText();
+        txtApellidoPaterno.getText();
+        btnGroupGenero.getSelection().getActionCommand();
+        btnGroupEstadoCivil.getSelection().getActionCommand();
+        btnGroupHijos.getSelection().getActionCommand();
+        spnNoHijos.getValue();
+        btnGroupFuenteIngresos.getSelection().getActionCommand();
+       
+    }
+    
+    public void CalcularCurp(){
+        fechaChooser= ""+dt.format(dtcFechaNacimiento.getDate());
+        String diaa = ""+dia.format(dtcFechaNacimiento.getDate());
+        String mess =""+ mes.format(dtcFechaNacimiento.getDate());
+        String aniio = ""+ anio.format(dtcFechaNacimiento.getDate());
+        //anio =""+ dt.format(dtcFechaNacimiento.getDate().getYear());
+        rbtnMasculino.setActionCommand("Hombre");
+        rbtnFemenino.setActionCommand("Mujer");
+        Curp c = new Curp();
+        c.getNombrecompleto(txtNombre.getText()+" "+txtSegundoNombre.getText(), txtApellidoPaterno.getText(), txtApellidoMaterno.getText());
+        c.getFecha(diaa,mess,aniio);
+        c.getEstado(cmbEntidadFederativa.getSelectedItem().toString());
+        c.getSexo(btnGroupGenero.getSelection().getActionCommand());
+        
+        txtCurp.setText(c.curpGen());
+        //JOptionPane.showMessageDialog(null,"CURP");
+    }
           
     public void CalcularEdad(String FechaChooser, JLabel lblEdad){
         try{
@@ -2463,7 +2628,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         LocalDate fechaNacimiento = LocalDate.parse(fechaChooser);
         Period periodo = Period.between(fechaNacimiento, FechaActual);
         if (periodo.getYears()<= 18){
-            JOptionPane.showMessageDialog(null,"No puede solicitar credito");
+            //JOptionPane.showMessageDialog(null,"No puede solicitar credito");
         }else{
             lblEdad.setText(""+periodo.getYears());
         }
