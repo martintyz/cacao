@@ -356,7 +356,7 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
              //cmbemp.addItem(dvm);
                 DefaultComboBoxModel mod=new DefaultComboBoxModel(zona);
                 cmbzonaP.setModel(mod);         
-                cmbzonaP.setSelectedIndex(1);
+                
             } catch (SQLException e) {
         
                 System.out.println("Error "+e.getMessage());

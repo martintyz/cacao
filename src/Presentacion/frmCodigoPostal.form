@@ -285,7 +285,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Icons/List.png"/>
+          <Image iconType="3" name="/Icons/Find.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Mostrar C&#xf3;digos Postales"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -307,7 +307,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Icons/List.png"/>
+          <Image iconType="3" name="/Icons/Find.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Mostrar municipios"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

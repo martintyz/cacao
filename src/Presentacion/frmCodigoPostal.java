@@ -179,7 +179,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         });
 
         btnListaCP.setBackground(new java.awt.Color(255, 255, 255));
-        btnListaCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
+        btnListaCP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Find.png"))); // NOI18N
         btnListaCP.setToolTipText("Mostrar Códigos Postales");
         btnListaCP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnListaCP.setBorderPainted(false);
@@ -192,7 +192,7 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         });
 
         btnListaMuni.setBackground(new java.awt.Color(255, 255, 255));
-        btnListaMuni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/List.png"))); // NOI18N
+        btnListaMuni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Find.png"))); // NOI18N
         btnListaMuni.setToolTipText("Mostrar municipios");
         btnListaMuni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnListaMuni.setBorderPainted(false);

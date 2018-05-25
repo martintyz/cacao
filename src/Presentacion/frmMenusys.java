@@ -162,13 +162,21 @@ public class frmMenusys extends javax.swing.JFrame {
         // TODO add your handling code here:
         //JOptionPane.showMessageDialog(null, "Click");
         try{
-            frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
+//            frmDatosGeneralesCliente datos=new frmDatosGeneralesCliente();
+//            Dimension desktopSize = jdpSistema.getSize();
+//            Dimension FrameSize = datos.getSize();
+//            datos.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+//            jdpSistema.add(datos);
+//            jdpSistema.moveToFront(datos);
+//            datos.show();
+            frmListaContacto contacto=new frmListaContacto();
             Dimension desktopSize = jdpSistema.getSize();
-            Dimension FrameSize = datos.getSize();
-            datos.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
-            jdpSistema.add(datos);
-            jdpSistema.moveToFront(datos);
-            datos.show();
+            Dimension FrameSize = contacto.getSize();
+            contacto.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+            jdpSistema.add(contacto);
+            jdpSistema.moveToFront(contacto);
+            contacto.show();
+                
             
         }
         catch(Exception e){
@@ -203,7 +211,7 @@ public class frmMenusys extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jdpSistema;
+    public static javax.swing.JDesktopPane jdpSistema;
     private javax.swing.JMenuBar mnbSistema;
     private javax.swing.JMenuItem mniIndividuales;
     private javax.swing.JMenuItem mnicodigosp;
