@@ -17,6 +17,7 @@ public class Curp {
     Integer dia=0, año=0, mes = 0;
     char a, b;
     String curpg = "";
+    double random1,random2;
     
     public void getFecha(String a, String b, String c){
         
@@ -132,6 +133,14 @@ public class Curp {
         //JOptionPane.showMessageDialog(null, curpg);
         return curpg;
         
+    }
+    
+    public String homo(){
+        random1 = (Math.random()) * 10.00;
+        String rd1 = String.valueOf(random1).substring(0,1);
+        random2 = (Math.random()) * 8.00;
+        String rd2 = String.valueOf(random2).substring(0,1);
+        return ""+rd1+" "+rd2;
     }
     
     public void entidadFederativa(){

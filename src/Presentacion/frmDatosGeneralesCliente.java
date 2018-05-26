@@ -7,6 +7,7 @@ package Presentacion;
 
 import Negocio.Logica;
 import groovyjarjarantlr.collections.impl.Vector;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -35,6 +36,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
@@ -57,6 +59,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     DomicilioTemporal auxDom;
     ArrayList<DomicilioTemporal> listaDomicilios = new ArrayList<DomicilioTemporal>();
     boolean domicilioCompleto = false;
+    boolean datosCompletos = false;
 
     /**
      * Creates new form frmDatosGeneralesCliente
@@ -87,6 +90,19 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         rbtnNegocio.addActionListener(actionListener);
         rbtnAmbos.addActionListener(actionListener);   
         rbtnHijosSi.addActionListener(actionListener2);
+             
+        rbtnMasculino.setActionCommand("Masculino");
+        rbtnFemenino.setActionCommand("Femenino");
+        rbtnSoltero.setActionCommand("Soltero");
+        rbtnCasado.setActionCommand("Casado");
+        rbtnDivorciado.setActionCommand("Divorciado");
+        rbtnUnionLibre.setActionCommand("Unión Libre");
+        rbtnViudo.setActionCommand("Viudo");
+        rbtnHijosSi.setActionCommand("Si");
+        rbtnHijosNo.setActionCommand("No");
+        rbtnEmpleado.setActionCommand("Empleado");
+        rbtnNegocio.setActionCommand("Negocio");
+        rbtnAmbos.setActionCommand("Ambos");
                      
         dtcFechaNacimiento.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
@@ -139,7 +155,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         tbpDatosGeneralesCliente = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        pnldatosperonales = new javax.swing.JPanel();
         pnlDatosPersonalesSolicitante = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -368,8 +384,8 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(64834, 64834));
+        pnldatosperonales.setBackground(new java.awt.Color(255, 255, 255));
+        pnldatosperonales.setMaximumSize(new java.awt.Dimension(64834, 64834));
 
         pnlDatosPersonalesSolicitante.setBackground(new java.awt.Color(255, 255, 255));
         pnlDatosPersonalesSolicitante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Solicitante"));
@@ -955,22 +971,22 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnldatosperonalesLayout = new javax.swing.GroupLayout(pnldatosperonales);
+        pnldatosperonales.setLayout(pnldatosperonalesLayout);
+        pnldatosperonalesLayout.setHorizontalGroup(
+            pnldatosperonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnldatosperonalesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlDatosPersonalesSolicitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnldatosperonalesLayout.setVerticalGroup(
+            pnldatosperonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnldatosperonalesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlDatosPersonalesSolicitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tbpDatosGeneralesCliente.addTab("Datos Personales", jPanel1);
+        tbpDatosGeneralesCliente.addTab("Datos Personales", pnldatosperonales);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2431,6 +2447,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmbCiudadEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCiudadEmpresaActionPerformed
@@ -2446,7 +2463,24 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblDomicilioMouseClicked
 
     private void tbpDatosGeneralesClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpDatosGeneralesClienteMouseClicked
-        // TODO add your handling code here:      
+        // TODO add your handling code here:     
+        int noPestania = tbpDatosGeneralesCliente.getSelectedIndex();
+        switch (noPestania){
+            case 1 : 
+                if(!validaDatosCliente()){
+                    JOptionPane.showMessageDialog(null, "Por favor verifique los datos del cliente", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    tbpDatosGeneralesCliente.setSelectedIndex(0);
+                }else{     
+                }
+                break;
+            case 2:
+                if(!validaDatosContacto()){
+                    JOptionPane.showMessageDialog(null, "Por favor verifique los datos de domicilio", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    tbpDatosGeneralesCliente.setSelectedIndex(1);
+                }
+                break;
+        }
+        
     }//GEN-LAST:event_tbpDatosGeneralesClienteMouseClicked
 
     private void txtLadaFijoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLadaFijoKeyTyped
@@ -2576,30 +2610,33 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null,"Dato radio"+btnGroupRegimen.getSelection().getActionCommand()); 
     }
     
-    public void obtenerDatosCliente(){
-        rbtnMasculino.setActionCommand("Masculino");
-        rbtnFemenino.setActionCommand("Femenino");
-        rbtnSoltero.setActionCommand("Soltero");
-        rbtnCasado.setActionCommand("Casado");
-        rbtnDivorciado.setActionCommand("Divorciado");
-        rbtnUnionLibre.setActionCommand("Unión Libre");
-        rbtnViudo.setActionCommand("Viudo");
-        rbtnHijosSi.setActionCommand("Si");
-        rbtnHijosNo.setActionCommand("No");
-        rbtnEmpleado.setActionCommand("Empleado");
-        rbtnNegocio.setActionCommand("Negocio");
-        rbtnAmbos.setActionCommand("Ambos");
-        
-        txtNombre.getText();
-        txtSegundoNombre.getText();
-        txtApellidoMaterno.getText();
-        txtApellidoPaterno.getText();
-        btnGroupGenero.getSelection().getActionCommand();
-        btnGroupEstadoCivil.getSelection().getActionCommand();
-        btnGroupHijos.getSelection().getActionCommand();
-        spnNoHijos.getValue();
-        btnGroupFuenteIngresos.getSelection().getActionCommand();
+    public boolean validaDatosCliente(){
        
+        if(!txtNombre.getText().isEmpty() && !txtApellidoPaterno.getText().isEmpty() && btnGroupGenero.getSelection()!=null){
+            datosCompletos = true;         
+        }else{
+            if(txtNombre.getText().isEmpty()){
+                txtNombre.setToolTipText("Campo Obligatorio");
+                txtNombre.setBorder(new LineBorder(Color.RED));
+            }else{
+             
+            }
+         //  JOptionPane.showMessageDialog(this, "Debe llenar todos los campos", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return datosCompletos;
+    }
+    
+    public void obtenerDatosCliente(){
+        //        txtNombre.getText();
+//        txtSegundoNombre.getText();
+//        txtApellidoMaterno.getText();
+//        txtApellidoPaterno.getText();
+//        btnGroupGenero.getSelection().getActionCommand();
+//        btnGroupEstadoCivil.getSelection().getActionCommand();
+//        btnGroupHijos.getSelection().getActionCommand();
+//        spnNoHijos.getValue();
+//        btnGroupFuenteIngresos.getSelection().getActionCommand();
     }
     
     public void CalcularCurp(){
@@ -2735,7 +2772,6 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -2804,6 +2840,7 @@ public class frmDatosGeneralesCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlTelefonoCelular;
     private javax.swing.JPanel pnlTelefonoFijo;
     private javax.swing.JPanel pnlTelefonoReferencia;
+    private javax.swing.JPanel pnldatosperonales;
     private javax.swing.JRadioButton rbtnAmbos;
     private javax.swing.JRadioButton rbtnCasado;
     private javax.swing.JRadioButton rbtnDivorciado;
