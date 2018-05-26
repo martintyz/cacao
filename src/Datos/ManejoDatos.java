@@ -149,6 +149,19 @@ public class ManejoDatos {
         }
         return null;
     }
+    public ResultSet CPxId(int idcp){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaCPxId(?)}");
+            pstm.setInt(1, idcp);
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.err.println(e);
+        }
+        return null;
+    }
     // </editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Insertar">
     public void InsertarCP(String detalle,String cp,int idciudad,int idmuni,int idedo,int idzonap,int idtipoa){
@@ -172,5 +185,24 @@ public class ManejoDatos {
         
     }
     //</editor-fold>
-
+    //<editor-fold defaultstate="collapsed" desc="Actualizar">
+    public Boolean ActualizarCP(int idcp,String cp,String detalle,int tipoA,int zonaP,int idcd){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareStatement("{call spActualizarCP(?,?,?,?,?,?)}");
+            pstm.setInt(1, idcp);
+            pstm.setString(2, cp);
+            pstm.setString(3, detalle);
+            pstm.setInt(4, tipoA);
+            pstm.setInt(5, zonaP);
+            pstm.setInt(6, idcd);
+            pstm.executeQuery();
+            cnn.close();
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
+    //</editor-fold>
 }
