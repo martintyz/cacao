@@ -210,6 +210,11 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         btnEditarCP.setBorderPainted(false);
         btnEditarCP.setContentAreaFilled(false);
         btnEditarCP.setEnabled(false);
+        btnEditarCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarCPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -348,6 +353,22 @@ public class frmCodigoPostal extends javax.swing.JInternalFrame {
         cp.setVisible(true);
         
     }//GEN-LAST:event_btnAgregarCPActionPerformed
+
+    private void btnEditarCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCPActionPerformed
+        // TODO add your handling code here:
+        Frame f=JOptionPane.getFrameForComponent(this);
+        frmDetalleCodigoP cp=new frmDetalleCodigoP("Edición",f, true,(int)tblEntidad.getModel().getValueAt(tblEntidad.getSelectedRow(), 0),(int)tblMunicipio.getModel().getValueAt(tblMunicipio.getSelectedRow(), 0),(int)tblCP.getModel().getValueAt(tblCP.getSelectedRow(), 0));
+        cp.addWindowListener(new WindowAdapter() {
+           @Override
+                public void windowClosed(WindowEvent e){
+                    llenarCP();
+                }
+        });
+        Dimension desktopSize = this.getParent().getSize();
+        Dimension FrameSize = cp.getSize();
+        cp.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        cp.setVisible(true);
+    }//GEN-LAST:event_btnEditarCPActionPerformed
     public void llenarCP(){
         try{
             Logica oLogica=new Logica();

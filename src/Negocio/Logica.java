@@ -137,6 +137,17 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet  CPxId(int idcp){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            ResultSet cp=mdd.CPxId(idcp);
+            if(cp!=null)
+                return cp;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando los datos del Código Postal "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
     //<editor-fold defaultstate="collapsed" desc="Insertar">
     public void InsertarCP(String detalle,String cp,int idciudad,int idmuni,int idedo,int idzonap,int idtipoa){
@@ -146,6 +157,17 @@ public class Logica {
         }catch(Exception e){
             System.out.println("Ha ocurrido un error al agregar el Código Postal "+e.getMessage());
         }
+    }
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Actualizar">
+    public Boolean ActualizarCP(int idcp,String codigo,String detalle,int tipoa,int zonap,int idcd){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            return mdd.ActualizarCP(idcp, codigo, detalle, tipoa, zonap, idcd);
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error al actualizar el Código Postal "+e.getMessage());
+        }
+        return false;
     }
     //</editor-fold>
 }

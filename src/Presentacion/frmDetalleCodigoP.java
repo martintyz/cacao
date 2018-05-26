@@ -16,6 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import Presentacion.Auxiliar;
+import javax.swing.JComboBox;
 import javax.swing.text.NumberFormatter;
 
 /**
@@ -379,9 +380,38 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, e.getMessage()+ this.getName(),"Error",JOptionPane.ERROR_MESSAGE);
             }
         }else{
-            
+            try{
+                oLogica=new Logica();
+                ResultSet cpxid=oLogica.CPxId(idcodigop);
+                if(cpxid!=null){
+                    while(cpxid.next()){
+                        txtcodigoEstado.setText(cpxid.getString(1));
+                        txtEstado.setText(cpxid.getString(2));
+                        txtcodigoMuni.setText(cpxid.getString(3));
+                        txtMunicipio.setText(cpxid.getString(4));
+                        seleccionCombo(cpxid.getInt(5),cmbCiudad);
+                        seleccionCombo(cpxid.getInt(6), cmbzonaP);
+                        seleccionCombo(cpxid.getInt(7), cmbTipoAsen);
+                        txtcp.setText(cpxid.getString(9));
+                        txtasent.setText(cpxid.getString(10));
+                        
+                        btnAgregar.setText("Actualizar");
+                        //cmbCiudad.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage()+ this.getName(),"Error",JOptionPane.ERROR_MESSAGE);
+            }
         }
         
+    }
+    public void seleccionCombo(int id,JComboBox combo){
+        for (int i=0;i<combo.getModel().getSize();i++){
+            combo.setSelectedIndex(i);
+            DisplayValueModel cmb=(DisplayValueModel)combo.getSelectedItem();
+            if(id==(int)cmb.getValueMember())
+                break;
+        }
     }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
@@ -429,11 +459,31 @@ public class frmDetalleCodigoP extends javax.swing.JDialog {
                 if(JOptionPane.showConfirmDialog(this, "¿Desea guardar la siguiente información? \nCP: "+txtcp.getText()+"\nAsentamiento: "+txtasent.getText()+"\nTipo: "+cmbTipoAsen.getSelectedItem().toString()+"\nZona: "+cmbzonaP.getSelectedItem().toString()+"\nMunicipio: "+txtMunicipio.getText()+"\nEstado: "+txtEstado.getText(), "Nuevo registro",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
                     try{
                         Logica oLogica=new Logica();
-                        oLogica.InsertarCP(txtasent.getText(), txtcp.getText(), (int)ciudad.getValueMember(), idmuni, idestado, (int)zonap.getValueMember(), (int)tipoA.getValueMember());
+                        oLogica.InsertarCP(txtasent.getText(), txtcp.getText(), (int)ciudad.getValueMember(), 
+                                idmuni, idestado, (int)zonap.getValueMember(), (int)tipoA.getValueMember());
                         JOptionPane.showMessageDialog(this, "Código Postal agregado correctamente","Nuevo Código Postal",JOptionPane.INFORMATION_MESSAGE);
                         this.dispose();
                     }catch(Exception e){
                         JOptionPane.showMessageDialog(this, "Hubo un error al insertar el Código Postal\n"+e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        }else{
+            if(val){
+                if(JOptionPane.showConfirmDialog(this, "¿Desea guardar la siguiente información? \nCP: "+txtcp.getText()+
+                        "\nAsentamiento: "+txtasent.getText()+"\nTipo: "+cmbTipoAsen.getSelectedItem().toString()+"\nZona: "+
+                        cmbzonaP.getSelectedItem().toString()+"\nMunicipio: "+txtMunicipio.getText()+"\nEstado: "+
+                        txtEstado.getText(), "Editar registro",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                    try{
+                        Logica oLogica=new Logica();
+                        if(oLogica.ActualizarCP(idcodigop, txtcp.getText(),txtasent.getText(),(int)tipoA.getValueMember(), (int)zonap.getValueMember(), (int)ciudad.getValueMember())){
+                            JOptionPane.showMessageDialog(this, "Código Postal actualizado correctamente","Edición Código Postal",JOptionPane.INFORMATION_MESSAGE);
+                            this.dispose();
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Hubo un error al actualizar el Código Postal", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(this, "Hubo un error al actualizar el Código Postal\n"+e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
