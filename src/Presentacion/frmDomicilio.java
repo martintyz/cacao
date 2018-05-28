@@ -5,7 +5,9 @@
  */
 package Presentacion;
 
+import Presentacion.DomicilioTemporal;
 import Negocio.Logica;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JFormattedTextField;
@@ -19,9 +21,10 @@ import javax.swing.JSpinner;
 public class frmDomicilio extends javax.swing.JDialog {
     
     char validarCampoNumerico, validarCampoLetras;
-
+    DomicilioTemporal domTemporal;
      private boolean pulsoOK, auxiliar;
-     DomicilioTemporal domTemporal;
+     int idedoT,idmuniT;
+     
     /**
      * Creates new form frmDomicilio
      */
@@ -68,9 +71,7 @@ public class frmDomicilio extends javax.swing.JDialog {
         txtCodigoPostal = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        lblEstadoDomicilio = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        lblMunicipio = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         cmbColoniaDomicilio = new javax.swing.JComboBox<>();
         spnMesesResidencia = new javax.swing.JSpinner();
@@ -79,9 +80,14 @@ public class frmDomicilio extends javax.swing.JDialog {
         jLabel31 = new javax.swing.JLabel();
         cmbTipoVivienda = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
-        cmbTipoAsentamiento = new javax.swing.JComboBox<>();
         spnAñosResidencia = new javax.swing.JSpinner();
         lblMesesResidencia = new javax.swing.JLabel();
+        txttipoA = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtentidad = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtmuni = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
 
@@ -128,6 +134,9 @@ public class frmDomicilio extends javax.swing.JDialog {
 
         txtCodigoPostal.setBorder(null);
         txtCodigoPostal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCodigoPostalKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoPostalKeyTyped(evt);
             }
@@ -137,17 +146,16 @@ public class frmDomicilio extends javax.swing.JDialog {
 
         jLabel24.setText("Estado");
 
-        lblEstadoDomicilio.setBackground(new java.awt.Color(255, 255, 255));
-        lblEstadoDomicilio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        lblEstadoDomicilio.setDoubleBuffered(true);
-
         jLabel23.setText("Municipio");
-
-        lblMunicipio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel22.setText("Colonia");
 
         cmbColoniaDomicilio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cmbColoniaDomicilio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbColoniaDomicilioActionPerformed(evt);
+            }
+        });
 
         spnMesesResidencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, 11, 1));
         spnMesesResidencia.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -166,8 +174,6 @@ public class frmDomicilio extends javax.swing.JDialog {
 
         jLabel32.setText("Tipo de asentamiento");
 
-        cmbTipoAsentamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Casa sola", "Habitacional" }));
-
         spnAñosResidencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, 60, 1));
         spnAñosResidencia.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -182,6 +188,18 @@ public class frmDomicilio extends javax.swing.JDialog {
 
         lblMesesResidencia.setText("meses");
 
+        txttipoA.setBackground(new java.awt.Color(255, 255, 255));
+        txttipoA.setBorder(null);
+        txttipoA.setEnabled(false);
+
+        txtentidad.setBackground(new java.awt.Color(255, 255, 255));
+        txtentidad.setBorder(null);
+        txtentidad.setEnabled(false);
+
+        txtmuni.setBackground(new java.awt.Color(255, 255, 255));
+        txtmuni.setBorder(null);
+        txtmuni.setEnabled(false);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -193,8 +211,8 @@ public class frmDomicilio extends javax.swing.JDialog {
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                            .addComponent(txtCodigoPostal, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(txtCodigoPostal)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24)
@@ -202,30 +220,33 @@ public class frmDomicilio extends javax.swing.JDialog {
                             .addComponent(jLabel22))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblEstadoDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbColoniaDomicilio, 0, 244, Short.MAX_VALUE))))
+                            .addComponent(jSeparator2)
+                            .addComponent(cmbColoniaDomicilio, 0, 244, Short.MAX_VALUE)
+                            .addComponent(txtentidad)
+                            .addComponent(txtmuni)
+                            .addComponent(jSeparator3))))
                 .addGap(18, 33, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel30)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel32)
+                        .addComponent(spnAñosResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbTipoAsentamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(spnAñosResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblAñosResidencia)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(spnMesesResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblMesesResidencia))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel31)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cmbTipoVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(28, 28, 28))
+                        .addComponent(lblAñosResidencia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(spnMesesResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMesesResidencia))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbTipoVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addComponent(txttipoA))))
+                .addGap(30, 30, 30))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,15 +339,19 @@ public class frmDomicilio extends javax.swing.JDialog {
                             .addComponent(jLabel25))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(txtentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblEstadoDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtmuni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbColoniaDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22)))
@@ -345,8 +370,10 @@ public class frmDomicilio extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32)
-                            .addComponent(cmbTipoAsentamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(25, 25, 25))
+                            .addComponent(txttipoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17))
         );
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Apply.png"))); // NOI18N
@@ -396,8 +423,13 @@ public class frmDomicilio extends javax.swing.JDialog {
 
     private void txtCodigoPostalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoPostalKeyTyped
         // TODO add your handling code here:
-       validarCampoNumerico = evt.getKeyChar();
-       if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
+        if(txtCodigoPostal.getText().length()<=5){
+            validarCampoNumerico = evt.getKeyChar();
+            if (validarCampoNumerico < '0' || validarCampoNumerico > '9') evt.consume();
+        }
+        
+       
+       
     }//GEN-LAST:event_txtCodigoPostalKeyTyped
  
     private void txtNoExteriorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoExteriorKeyTyped
@@ -447,10 +479,48 @@ public class frmDomicilio extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
+    private void txtCodigoPostalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoPostalKeyPressed
+        // TODO add your handling code here:
+        if(KeyEvent.VK_ENTER==evt.getKeyCode()){
+            //JOptionPane.showMessageDialog(this, "Buscar CP");
+            if(txtCodigoPostal.getText().length()==5){
+                Logica oLogica=new Logica();
+                ResultSet cp=oLogica.CPxCod(txtCodigoPostal.getText());
+                try{
+                    if(cp!=null){
+                        new Auxiliar().llenarCombo(cmbColoniaDomicilio, cp, 9, 7, 6);
+                        cp.beforeFirst();
+                        if(cp.next()){
+                             txtentidad.setText(cp.getString(2));
+                             txtmuni.setText(cp.getString(4));
+                             idedoT=cp.getInt(1);
+                             idmuniT=cp.getInt(3);
+                        }
+                    }
+                }catch(Exception e){
+                       JOptionPane.showMessageDialog(this, e.getMessage(), "Error Código Postal",JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "El Código Postal debe ser de 5 números", "Error Código Postal",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_txtCodigoPostalKeyPressed
+
+    private void cmbColoniaDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbColoniaDomicilioActionPerformed
+        // TODO add your handling code here:
+        if(cmbColoniaDomicilio.getModel().getSize()>1){
+            //JOptionPane.showMessageDialog(this, cmbColoniaDomicilio.getSelectedItem());
+            DisplayValueModel dvm=(DisplayValueModel)cmbColoniaDomicilio.getSelectedItem();
+            int idtipoA=(int)dvm.getValueMember2();
+            
+        }
+        
+    }//GEN-LAST:event_cmbColoniaDomicilioActionPerformed
+
     public DomicilioTemporal obtenerCamposDomicilio(){
         domTemporal =  new DomicilioTemporal(txtDescDomicilio.getText() ,txtCalle.getText(), txtCalle1.getText(),txtCalle2.getText(),txtNoInterior.getText(),txtNoExterior.getText(),
-                                                               txtCodigoPostal.getText(),cmbColoniaDomicilio.getSelectedItem().toString(),lblMunicipio.getText(),
-                                                               lblMunicipio.getText(),cmbTipoVivienda.getSelectedItem().toString(), cmbTipoAsentamiento.getSelectedItem().toString(),
+                                                               txtCodigoPostal.getText(),cmbColoniaDomicilio.getSelectedItem().toString(),txtmuni.getText(),
+                                                               txtentidad.getText(),cmbTipoVivienda.getSelectedItem().toString(), txttipoA.getText(),
                                                                (Integer)spnAñosResidencia.getValue(),(Integer)spnMesesResidencia.getValue());
         return domTemporal;
     }
@@ -547,7 +617,6 @@ public class frmDomicilio extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
     private javax.swing.JComboBox<String> cmbColoniaDomicilio;
-    private javax.swing.JComboBox<String> cmbTipoAsentamiento;
     private javax.swing.JComboBox<String> cmbTipoVivienda;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -565,17 +634,18 @@ public class frmDomicilio extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblAñosResidencia;
-    private javax.swing.JLabel lblEstadoDomicilio;
     private javax.swing.JLabel lblMesesResidencia;
-    private javax.swing.JLabel lblMunicipio;
     private javax.swing.JSpinner spnAñosResidencia;
     private javax.swing.JSpinner spnMesesResidencia;
     private javax.swing.JTextField txtCalle;
@@ -585,5 +655,8 @@ public class frmDomicilio extends javax.swing.JDialog {
     public javax.swing.JTextField txtDescDomicilio;
     private javax.swing.JTextField txtNoExterior;
     private javax.swing.JTextField txtNoInterior;
+    private javax.swing.JTextField txtentidad;
+    private javax.swing.JTextField txtmuni;
+    private javax.swing.JTextField txttipoA;
     // End of variables declaration//GEN-END:variables
 }

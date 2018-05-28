@@ -159,6 +159,28 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet CPxCod(String cod){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            ResultSet cp=mdd.CPxCod(cod);
+            if(cp!=null)
+                return cp;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando los datos del Código Postal "+e.getMessage());
+        }
+        return null;
+    }
+    public ResultSet TipoAxID(int tipoA){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            ResultSet tipo=mdd.tipoAxID(tipoA);
+            if(tipo!=null)
+                return tipo;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando el Tipo de Asentamiento "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
     
     //<editor-fold defaultstate="collapsed" desc="Insertar">

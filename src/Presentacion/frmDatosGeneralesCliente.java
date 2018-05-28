@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import Presentacion.DomicilioTemporal;
 import Negocio.Logica;
 import groovyjarjarantlr.collections.impl.Vector;
 import java.awt.Color;

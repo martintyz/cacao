@@ -5,6 +5,12 @@
  */
 package Presentacion;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.naming.spi.DirStateFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author Sistemas
@@ -78,6 +84,61 @@ public class Auxiliar {
                 return cp>=98000 && cp<=99999;
             default:
                 return false;
+        }
+    }
+    public void llenarCombo(JComboBox cmb,ResultSet r,int iddisplay,int idvalue){
+        cmb.removeAllItems();
+        int cont=0;
+        try {
+            while(r.next()){
+                cont++;
+            }
+            r.beforeFirst();
+        }catch(Exception e){
+            System.out.println("Error "+e.getMessage());
+        }
+            Object[] matriz=new Object[cont];
+            int i=0;
+        try {
+            while(r.next()){
+             DisplayValueModel dvm=new DisplayValueModel(r.getObject(iddisplay),r.getObject(idvalue));
+             matriz[i]=dvm;
+             i++;
+             //cmbemp.addItem(dvm);
+             DefaultComboBoxModel mod=new DefaultComboBoxModel(matriz);
+             cmb.setModel(mod);
+            }
+        } catch (SQLException e) {
+        
+            System.out.println("Error "+e.getMessage());
+        }
+    }
+    public void llenarCombo(JComboBox cmb,ResultSet r,int iddisplay,int idvalue,int idvalue2){
+        cmb.removeAllItems();
+        int cont=0;
+        try {
+            while(r.next()){
+                cont++;
+            }
+            r.beforeFirst();
+        }catch(Exception e){
+            System.out.println("Error "+e.getMessage());
+        }
+            Object[] matriz=new Object[cont];
+            int i=0;
+        try {
+            while(r.next()){
+             DisplayValueModel dvm=new DisplayValueModel(r.getObject(iddisplay),r.getObject(idvalue),r.getObject(idvalue2));
+             matriz[i]=dvm;
+             i++;
+            }
+             //cmbemp.addItem(dvm);
+             DefaultComboBoxModel mod=new DefaultComboBoxModel(matriz);
+             cmb.setModel(mod);
+            
+        } catch (SQLException e) {
+        
+            System.out.println("Error "+e.getMessage());
         }
     }
 }

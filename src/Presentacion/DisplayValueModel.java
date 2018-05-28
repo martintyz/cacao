@@ -10,7 +10,9 @@ package Presentacion;
  * @author SISTEMAS5
  */
 public class DisplayValueModel {
-
+    private Object displayMember;
+    private Object valueMember;
+    private Object valueMember2;
     /**
      * @return the displayMember
      */
@@ -24,14 +26,23 @@ public class DisplayValueModel {
     public Object getValueMember() {
         return valueMember;
     }
-     private Object displayMember;
-    private Object valueMember;
-    
+    /**
+     * @return the valueMember2
+     */
+    public Object getValueMember2() {
+        return valueMember2;
+    }
      
     public DisplayValueModel(Object display,Object value)
     {
         displayMember=display;
         valueMember=value;
+    }
+    public DisplayValueModel(Object display,Object value,Object value2)
+    {
+        displayMember=display;
+        valueMember=value;
+        valueMember2=value2;
     }
     
     @Override

@@ -11,8 +11,9 @@ package Presentacion;
  */
 public class DomicilioTemporal {
 
-    private String Descripcion, Calle, CalleRef1, CalleRef2,NoInterior, NoExterior,CodigoPostal, Colonia,Ciudad, Estado,  TipoVivienda, TipoAsentamiento;
+    private String Descripcion, Calle, CalleRef1, CalleRef2,NoInterior, NoExterior,CodigoPostal, Colonia,Municipio, Estado,  TipoVivienda, TipoAsentamiento;
     int AñosResidencia, MesesResidencia;
+    private int idEdo,idMuni,idCP;
 
     public int getAñosResidencia() {
         return AñosResidencia;
@@ -30,7 +31,7 @@ public class DomicilioTemporal {
         this.MesesResidencia = MesesResidencia;
     }
 
-    public DomicilioTemporal(String Descripcion, String Calle, String CalleRef1, String CalleRef2, String NoInterior, String NoExterior, String CodigoPostal, String Colonia, String Ciudad, String Estado, String TipoVivienda, String TipoAsentamiento, int AñosResidencia, int MesesResidencia) {
+    public DomicilioTemporal(String Descripcion, String Calle, String CalleRef1, String CalleRef2, String NoInterior, String NoExterior, String CodigoPostal, String Colonia, String Municipio, String Estado, String TipoVivienda, String TipoAsentamiento, int AñosResidencia, int MesesResidencia) {
         this.Descripcion = Descripcion;
         this.Calle = Calle;
         this.CalleRef1 = CalleRef1;
@@ -39,7 +40,7 @@ public class DomicilioTemporal {
         this.NoExterior = NoExterior;
         this.CodigoPostal = CodigoPostal;
         this.Colonia = Colonia;
-        this.Ciudad = Ciudad;
+        this.Municipio = Municipio;
         this.Estado = Estado;
         this.TipoVivienda = TipoVivienda;
         this.TipoAsentamiento = TipoAsentamiento;
@@ -112,12 +113,12 @@ public class DomicilioTemporal {
         this.Colonia = Colonia;
     }
 
-    public String getCiudad() {
-        return Ciudad;
+    public String getMunicipio() {
+        return Municipio;
     }
 
-    public void setCiudad(String Ciudad) {
-        this.Ciudad = Ciudad;
+    public void setMunicipio(String Municipio) {
+        this.Municipio=Municipio;
     }
 
     public String getEstado() {
@@ -142,6 +143,48 @@ public class DomicilioTemporal {
 
     public void setTipoAsentamiento(String TipoAsentamiento) {
         this.TipoAsentamiento = TipoAsentamiento;
+    }
+
+    /**
+     * @return the idEdo
+     */
+    public int getIdEdo() {
+        return idEdo;
+    }
+
+    /**
+     * @param idEdo the idEdo to set
+     */
+    public void setIdEdo(int idEdo) {
+        this.idEdo = idEdo;
+    }
+
+    /**
+     * @return the idMuni
+     */
+    public int getIdMuni() {
+        return idMuni;
+    }
+
+    /**
+     * @param idMuni the idMuni to set
+     */
+    public void setIdMuni(int idMuni) {
+        this.idMuni = idMuni;
+    }
+
+    /**
+     * @return the idCP
+     */
+    public int getIdCP() {
+        return idCP;
+    }
+
+    /**
+     * @param idCP the idCP to set
+     */
+    public void setIdCP(int idCP) {
+        this.idCP = idCP;
     }
     
     

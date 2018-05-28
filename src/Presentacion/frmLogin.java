@@ -200,35 +200,8 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         Logica oLogica=new Logica();
         ResultSet emp=oLogica.Empresas();
-        //DefaultComboBoxModel mod=new DefaultComboBoxModel();
-          cmbemp.removeAllItems();
-        //mod.addElement("Seleccione un campo");
-        //cmbemp.setModel(mod);
-        int cont=0;
-        try {
-            while(emp.next()){
-                cont++;
-            }
-            emp.beforeFirst();
-        }catch(Exception e){
-            System.out.println("Error "+e.getMessage());
-        }
-            Object[] matriz=new Object[cont];
-            int i=0;
-        try {
-            while(emp.next()){
-             DisplayValueModel dvm=new DisplayValueModel(emp.getObject(2),emp.getObject(1));
-             matriz[i]=dvm;
-             i++;
-             //cmbemp.addItem(dvm);
-             DefaultComboBoxModel mod=new DefaultComboBoxModel(matriz);
-             cmbemp.setModel(mod);
-            }
-        } catch (SQLException e) {
+        new Auxiliar().llenarCombo(cmbemp, emp, 2, 1);
         
-            System.out.println("Error "+e.getMessage());
-        }
-
     }//GEN-LAST:event_formWindowActivated
 
     private void btniniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciarActionPerformed

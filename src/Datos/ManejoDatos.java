@@ -165,7 +165,33 @@ public class ManejoDatos {
     public ResultSet TipoID(){
         try{
             Connection cnn=AccesoDatos.ObtenerConexion();
-            PreparedStatement pstm=cnn.prepareCall("{call spConsultaTipoID()");
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaTipoID()}");
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    public ResultSet CPxCod(String cod){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaCPxCod(?)}");
+            pstm.setString(1, cod);
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    public ResultSet tipoAxID(int tipoA){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaTipoAxID(?)}");
+            pstm.setInt(1, tipoA);
             ResultSet r=pstm.executeQuery();
             if(r!=null)
                 return r;
