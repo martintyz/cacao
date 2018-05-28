@@ -148,7 +148,19 @@ public class Logica {
         }
         return null;
     }
+    public ResultSet TipoID(){
+        try{
+            ManejoDatos mdd=new ManejoDatos();
+            ResultSet tipo=mdd.TipoID();
+            if(tipo!=null)
+                return tipo;
+        }catch(Exception e){
+            System.out.println("Ha ocurrido un error cargando la lista de identificaciones "+e.getMessage());
+        }
+        return null;
+    }
     //</editor-fold> 
+    
     //<editor-fold defaultstate="collapsed" desc="Insertar">
     public void InsertarCP(String detalle,String cp,int idciudad,int idmuni,int idedo,int idzonap,int idtipoa){
         try{
@@ -159,7 +171,8 @@ public class Logica {
         }
     }
     //</editor-fold>
-    //<editor-fold defaultstate="collapsed" desc="Actualizar">
+    
+//<editor-fold defaultstate="collapsed" desc="Actualizar">
     public Boolean ActualizarCP(int idcp,String codigo,String detalle,int tipoa,int zonap,int idcd){
         try{
             ManejoDatos mdd=new ManejoDatos();

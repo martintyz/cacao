@@ -162,6 +162,18 @@ public class ManejoDatos {
         }
         return null;
     }
+    public ResultSet TipoID(){
+        try{
+            Connection cnn=AccesoDatos.ObtenerConexion();
+            PreparedStatement pstm=cnn.prepareCall("{call spConsultaTipoID()");
+            ResultSet r=pstm.executeQuery();
+            if(r!=null)
+                return r;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
     // </editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Insertar">
     public void InsertarCP(String detalle,String cp,int idciudad,int idmuni,int idedo,int idzonap,int idtipoa){
