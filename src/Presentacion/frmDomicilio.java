@@ -512,6 +512,17 @@ public class frmDomicilio extends javax.swing.JDialog {
             //JOptionPane.showMessageDialog(this, cmbColoniaDomicilio.getSelectedItem());
             DisplayValueModel dvm=(DisplayValueModel)cmbColoniaDomicilio.getSelectedItem();
             int idtipoA=(int)dvm.getValueMember2();
+            Logica oLogica=new Logica();
+            try{
+            ResultSet tipo=oLogica.TipoAxID(idtipoA);
+            if(tipo!=null)
+                if(tipo.next()){
+                    txttipoA.setText(tipo.getString(2));
+                    
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Error al cargar el Tipo de Asentamiento\n"+e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            }
             
         }
         
